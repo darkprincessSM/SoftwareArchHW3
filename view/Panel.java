@@ -48,7 +48,7 @@ public class Panel {
         inputPanel.setPreferredSize(new Dimension(400, 200));
         inputPanel.setBackground(Color.blue);
         inputPanel.setForeground(Color.black);
-        
+        inputPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
         inputPanel.add(inputLabel);
 
         
