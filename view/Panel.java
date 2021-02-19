@@ -31,42 +31,54 @@ public class Panel {
         Container cp = window.getContentPane();
 
         JPanel titlePanel = new JPanel();
+        JPanel textPanel = new JPanel(); //for all the jtextareas
         JPanel inputPanel = new JPanel();
-        JPanel textPanel = new JPanel();
+        JPanel intermediatePanel = new JPanel();
+        JPanel outputPanel = new JPanel();
         JPanel priorityPanel = new JPanel();
 
         JLabel titleLabel = new JLabel("Team 6: Pipes and Filters");
         cp.add(BorderLayout.NORTH, titlePanel);
-        titlePanel.setPreferredSize(new Dimension(400, 200));
+        titlePanel.setPreferredSize(new Dimension(400, 50));
         titlePanel.setBackground(Color.lightGray);
         titlePanel.setForeground(Color.black);
-        titlePanel.setLayout(new FlowLayout(FlowLayout.LEADING));
+        //titlePanel.setLayout(new FlowLayout(FlowLayout.LEADING));
         titlePanel.add(titleLabel);
 
+        cp.add(BorderLayout.CENTER, textPanel);
+        textPanel.setPreferredSize(new Dimension(400, 500));
+        //textPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
+
         JLabel inputLabel = new JLabel("Input");
-        cp.add(BorderLayout.NORTH, inputPanel);
-        inputPanel.setPreferredSize(new Dimension(400, 200));
+        textPanel.add(BorderLayout.NORTH, inputPanel);
+        inputPanel.setPreferredSize(new Dimension(400, 165));
         inputPanel.setBackground(Color.blue);
         inputPanel.setForeground(Color.black);
-        inputPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
+        //inputPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
         inputPanel.add(inputLabel);
 
-        
-        
-
         JLabel middleLabel = new JLabel("Intermediate Output");
-        cp.add(BorderLayout.CENTER, textPanel);
-        textPanel.setPreferredSize(new Dimension(400, 200));
-        textPanel.setBackground(Color.white);
-        textPanel.setForeground(Color.black);
-        textPanel.add(middleLabel);
+        textPanel.add(BorderLayout.CENTER, intermediatePanel);
+        intermediatePanel.setPreferredSize(new Dimension(400, 165));
+        intermediatePanel.setBackground(Color.white);
+        intermediatePanel.setForeground(Color.black);
+        //intermediatePanel.setLayout(new FlowLayout(FlowLayout.LEADING));
+        intermediatePanel.add(middleLabel);
 
         JLabel outputLabel = new JLabel("Final output");
+        textPanel.add(BorderLayout.SOUTH, outputPanel);
+        outputPanel.setPreferredSize(new Dimension(400, 165));
+        outputPanel.setBackground(Color.green);
+        outputPanel.setForeground(Color.black);
+        //outputPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
+        outputPanel.add(outputLabel);
+
+        JLabel priorityLabel = new JLabel("Priority");
         cp.add(BorderLayout.SOUTH, priorityPanel);
-        priorityPanel.setPreferredSize(new Dimension(400, 200));
+        priorityPanel.setPreferredSize(new Dimension(400, 100));
         priorityPanel.setBackground(Color.magenta);
         priorityPanel.setForeground(Color.black);
-        priorityPanel.add(outputLabel);
+        priorityPanel.add(priorityLabel);
 
     }
     
