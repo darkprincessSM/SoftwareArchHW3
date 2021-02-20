@@ -123,8 +123,10 @@ public class Panel {
         priorityPanel.add(alphaButton);
         shiftButton.setBackground(Color.gray);
         shiftButton.setForeground(Color.black);
+        shiftButton.addActionListener(listener);
         alphaButton.setBackground(Color.gray);
         alphaButton.setForeground(Color.black);
+        alphaButton.addActionListener(listener);
 
     }
 
