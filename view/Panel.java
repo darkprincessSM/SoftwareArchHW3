@@ -1,5 +1,7 @@
 package view;
 
+import controller.GUIActionListener;
+
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -11,12 +13,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
 public class Panel {
-    
+
     private JFrame window;
 
     private JTextArea inputArea = new JTextArea();
@@ -26,15 +29,17 @@ public class Panel {
     private JRadioButton alphaButton = new JRadioButton("Alphabetical Sort");
     private JRadioButton shiftButton = new JRadioButton("Circular Shift");
 
+    JButton inputButton = new JButton("Enter");
+
     public Panel(JFrame window) {
         this.window = window;
     }
 
-    public void init(){
+    public void init() {
         Container cp = window.getContentPane();
 
         JPanel titlePanel = new JPanel();
-        JPanel textPanel = new JPanel(); //for all the jtextareas
+        JPanel textPanel = new JPanel(); // for all the jtextareas
         JPanel inputPanel = new JPanel();
         JPanel intermediatePanel = new JPanel();
         JPanel outputPanel = new JPanel();
@@ -45,13 +50,13 @@ public class Panel {
         titlePanel.setPreferredSize(new Dimension(400, 50));
         titlePanel.setBackground(Color.lightGray);
         titlePanel.setForeground(Color.black);
-        //titlePanel.setLayout(new FlowLayout(FlowLayout.LEADING));
+        // titlePanel.setLayout(new FlowLayout(FlowLayout.LEADING));
         titlePanel.add(titleLabel);
 
         cp.add(BorderLayout.CENTER, textPanel);
         textPanel.setPreferredSize(new Dimension(400, 450));
 
-        //area for entering input phrases
+        // area for entering input phrases
         inputPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         JLabel inputLabel = new JLabel("Input");
         textPanel.add(BorderLayout.NORTH, inputPanel);
@@ -61,14 +66,17 @@ public class Panel {
         inputPanel.add(inputScrollPane);
         inputArea.setEditable(true);
         inputArea.setLineWrap(true);
-        //inputArea.setBorder(new LineBorder(Color.black, 1));
+        // inputArea.setBorder(new LineBorder(Color.black, 1));
         inputScrollPane.setBorder(new LineBorder(Color.black, 1));
         inputScrollPane.setPreferredSize(new Dimension(150, 100));
         inputPanel.setPreferredSize(new Dimension(400, 150));
         inputPanel.setBackground(Color.lightGray);
         inputPanel.setForeground(Color.black);
+        inputPanel.add(BorderLayout.SOUTH, inputButton);
+        GUIActionListener listener = new GUIActionListener(this);
+        inputButton.addActionListener(listener);
 
-        //displaying the middle step
+        // displaying the middle step
         intermediatePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         JLabel intermediateLabel = new JLabel("Second Step");
         textPanel.add(BorderLayout.CENTER, intermediatePanel);
@@ -84,7 +92,7 @@ public class Panel {
         intermediatePanel.setBackground(Color.lightGray);
         intermediatePanel.setForeground(Color.black);
 
-        //displaying the output
+        // displaying the output
         outputPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         JLabel outputLabel = new JLabel("Final output");
         textPanel.add(BorderLayout.SOUTH, outputPanel);
@@ -92,7 +100,7 @@ public class Panel {
         outputPanel.add(outputArea);
         outputPanel.setPreferredSize(new Dimension(400, 150));
         outputPanel.setBackground(Color.lightGray);
-        outputPanel.setForeground(Color.black);        
+        outputPanel.setForeground(Color.black);
         JScrollPane outputScrollPane = new JScrollPane(outputArea);
         outputPanel.add(BorderLayout.SOUTH, outputScrollPane);
         outputArea.setEditable(false);
@@ -100,7 +108,7 @@ public class Panel {
         outputScrollPane.setBorder(new LineBorder(Color.black, 1));
         outputScrollPane.setPreferredSize(new Dimension(150, 100));
 
-        //for setting priority
+        // for setting priority
         ButtonGroup priorityGroup = new ButtonGroup();
         priorityGroup.add(shiftButton);
         priorityGroup.add(alphaButton);
@@ -118,6 +126,18 @@ public class Panel {
         alphaButton.setBackground(Color.gray);
         alphaButton.setForeground(Color.black);
 
+    }
+
+    public JButton getInputButton() {
+        return inputButton;
+    }
+
+    public JRadioButton getAlphaButton() {
+        return alphaButton;
+    }
+    
+    public JRadioButton getShiftButton() {
+        return shiftButton;
     }
     
     
