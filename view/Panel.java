@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,7 +23,7 @@ public class Panel {
     private JTextArea intermediateArea = new JTextArea();
     private JTextArea outputArea = new JTextArea();
 
-    private JRadioButton alphaButton = new JRadioButton("Alphabatize");
+    private JRadioButton alphaButton = new JRadioButton("Alphabetical Sort");
     private JRadioButton shiftButton = new JRadioButton("Circular Shift");
 
     public Panel(JFrame window) {
@@ -41,7 +42,7 @@ public class Panel {
 
         JLabel titleLabel = new JLabel("Team 6: Pipes and Filters");
         cp.add(BorderLayout.NORTH, titlePanel);
-        titlePanel.setPreferredSize(new Dimension(400, 60));
+        titlePanel.setPreferredSize(new Dimension(400, 50));
         titlePanel.setBackground(Color.lightGray);
         titlePanel.setForeground(Color.black);
         //titlePanel.setLayout(new FlowLayout(FlowLayout.LEADING));
@@ -49,8 +50,9 @@ public class Panel {
 
         cp.add(BorderLayout.CENTER, textPanel);
         textPanel.setPreferredSize(new Dimension(400, 450));
-        //textPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
 
+        //area for entering input phrases
+        inputPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         JLabel inputLabel = new JLabel("Input");
         textPanel.add(BorderLayout.NORTH, inputPanel);
         inputPanel.add(BorderLayout.NORTH, inputLabel);
@@ -66,20 +68,24 @@ public class Panel {
         inputPanel.setBackground(Color.lightGray);
         inputPanel.setForeground(Color.black);
 
-        JLabel intermediateLabel = new JLabel("Intermediate Output");
+        //displaying the middle step
+        intermediatePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        JLabel intermediateLabel = new JLabel("Second Step");
         textPanel.add(BorderLayout.CENTER, intermediatePanel);
         intermediatePanel.add(BorderLayout.NORTH, intermediateLabel);
         intermediatePanel.add(BorderLayout.SOUTH, intermediateArea);
         JScrollPane intermediateScrollPane = new JScrollPane(intermediateArea);
         intermediatePanel.add(intermediateScrollPane);
-        inputArea.setEditable(false);
-        inputArea.setLineWrap(true);
+        intermediateArea.setEditable(false);
+        intermediateArea.setLineWrap(true);
         intermediateScrollPane.setBorder(new LineBorder(Color.black, 1));
         intermediateScrollPane.setPreferredSize(new Dimension(150, 100));
         intermediatePanel.setPreferredSize(new Dimension(400, 150));
         intermediatePanel.setBackground(Color.lightGray);
         intermediatePanel.setForeground(Color.black);
 
+        //displaying the output
+        outputPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         JLabel outputLabel = new JLabel("Final output");
         textPanel.add(BorderLayout.SOUTH, outputPanel);
         outputPanel.add(outputLabel);
@@ -89,15 +95,28 @@ public class Panel {
         outputPanel.setForeground(Color.black);        
         JScrollPane outputScrollPane = new JScrollPane(outputArea);
         outputPanel.add(BorderLayout.SOUTH, outputScrollPane);
+        outputArea.setEditable(false);
+        outputArea.setLineWrap(true);
         outputScrollPane.setBorder(new LineBorder(Color.black, 1));
         outputScrollPane.setPreferredSize(new Dimension(150, 100));
 
+        //for setting priority
+        ButtonGroup priorityGroup = new ButtonGroup();
+        priorityGroup.add(shiftButton);
+        priorityGroup.add(alphaButton);
         JLabel priorityLabel = new JLabel("Priority");
+        priorityLabel.setForeground(Color.black);
         cp.add(BorderLayout.SOUTH, priorityPanel);
-        priorityPanel.setPreferredSize(new Dimension(400, 100));
+        priorityPanel.setPreferredSize(new Dimension(400, 60));
         priorityPanel.setBackground(Color.gray);
-        priorityPanel.setForeground(Color.black);
+        priorityPanel.setForeground(Color.white);
         priorityPanel.add(priorityLabel);
+        priorityPanel.add(shiftButton);
+        priorityPanel.add(alphaButton);
+        shiftButton.setBackground(Color.gray);
+        shiftButton.setForeground(Color.black);
+        alphaButton.setBackground(Color.gray);
+        alphaButton.setForeground(Color.black);
 
     }
     
