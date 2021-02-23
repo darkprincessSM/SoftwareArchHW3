@@ -12,9 +12,9 @@ import javax.swing.JTextArea;
 public class GUIActionListener implements ActionListener {
 
     private Panel panel;
-    private JTextArea inputArea;
-    private JTextArea intermediateArea;
-    private JTextArea outputArea;
+    // private JTextArea inputArea;
+    // private JTextArea intermediateArea;
+    // private JTextArea outputArea;
     private Boolean isSort = Boolean.valueOf(false);
     private Boolean isShift = Boolean.valueOf(false);
 
