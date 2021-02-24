@@ -46,10 +46,10 @@ public class GUIActionListener implements ActionListener {
             guiTransmitter.setPanel(panel);
             System.out.println("sending: '" + panel.getInputArea().getText() + "' to the filters");
             if (isShift) {
-                guiTransmitter.setPriority(2);
+                guiTransmitter.setPriority(1);
                 System.out.println("sending to the circular shifter");
             } else if (isSort) {
-                guiTransmitter.setPriority(1);
+                guiTransmitter.setPriority(2);
                 System.out.println("sending to be sorted alphabetically");
             }
             guiTransmitter.transmitIn(panel.getInputArea().getText());

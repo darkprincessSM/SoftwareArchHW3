@@ -10,7 +10,8 @@ public class GuiTransmitter {
     private Starter starter;
     private Panel panel;
     private ArrayList<String> stmt;
-    private int priority;
+    private int priority = 1;
+    private String inputStmt;
 
     public void transmitIn(String stringStmt) {
         // Transmit in from GUI

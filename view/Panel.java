@@ -30,10 +30,8 @@ public class Panel {
     private JTextArea inputArea = new JTextArea(5, 10);
     private JTextArea intermediateArea = new JTextArea(5, 10);
     private JTextArea outputArea = new JTextArea(5, 10);
-
     private JRadioButton alphaButton = new JRadioButton("Alphabetical Sort");
     private JRadioButton shiftButton = new JRadioButton("Circular Shift");
-
     private JButton inputButton = new JButton("Enter");
 
     public Panel(JFrame window) {
@@ -132,8 +130,9 @@ public class Panel {
         priorityPanel.setPreferredSize(new Dimension(350, 60));
         priorityPanel.setBackground(Color.gray);
         priorityPanel.setForeground(Color.white);
-        priorityPanel.add(alphaButton);
         priorityPanel.add(shiftButton);
+        priorityPanel.add(alphaButton);
+        shiftButton.setSelected(true);
         shiftButton.setBackground(Color.gray);
         shiftButton.setForeground(Color.black);
         shiftButton.addActionListener(listener);
@@ -159,6 +158,8 @@ public class Panel {
         return shiftButton;
     }
 
+    <<<<<<<HEAD
+
     public JTextArea getIntermediateArea() {
         return intermediateArea;
     }
@@ -167,4 +168,5 @@ public class Panel {
         return intermediatePanel;
     }
 
+    =======>>>>>>>b4a17d7dd2831571b7e257d76566717dad54d5f9
 }
