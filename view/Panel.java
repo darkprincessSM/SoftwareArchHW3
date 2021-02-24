@@ -28,10 +28,8 @@ public class Panel {
     private JTextArea inputArea = new JTextArea(5, 10);
     private JTextArea intermediateArea = new JTextArea();
     private JTextArea outputArea = new JTextArea();
-
     private JRadioButton alphaButton = new JRadioButton("Alphabetical Sort");
     private JRadioButton shiftButton = new JRadioButton("Circular Shift");
-
     private JButton inputButton = new JButton("Enter");
 
     public Panel(JFrame window) {
@@ -132,8 +130,9 @@ public class Panel {
         priorityPanel.setPreferredSize(new Dimension(350, 60));
         priorityPanel.setBackground(Color.gray);
         priorityPanel.setForeground(Color.white);
-        priorityPanel.add(alphaButton);
         priorityPanel.add(shiftButton);
+        priorityPanel.add(alphaButton);        
+        shiftButton.setSelected(true);
         shiftButton.setBackground(Color.gray);
         shiftButton.setForeground(Color.black);
         shiftButton.addActionListener(listener);
