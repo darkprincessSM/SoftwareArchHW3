@@ -25,7 +25,7 @@ public class Panel {
 
     private JFrame window;
 
-    private JTextArea inputArea = new JTextArea(5, 10);
+    private JTextArea inputArea = new JTextArea();
     private JTextArea intermediateArea = new JTextArea();
     private JTextArea outputArea = new JTextArea();
     private JRadioButton alphaButton = new JRadioButton("Alphabetical Sort");
@@ -157,4 +157,5 @@ public class Panel {
     public JRadioButton getShiftButton() {
         return shiftButton;
     }
+
 }

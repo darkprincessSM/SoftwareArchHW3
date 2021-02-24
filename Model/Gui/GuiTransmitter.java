@@ -10,7 +10,7 @@ public class GuiTransmitter extends Transmitter {
     private Starter starter;
     private Panel panel;
     private ArrayList<String> stmt;
-    private int priority;
+    private int priority = 1;
     private String inputStmt;
 
     public GuiTransmitter(String inputStmt) {
