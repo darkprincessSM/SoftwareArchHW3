@@ -19,6 +19,7 @@ public class GUI {
 
         window.pack();
         window.setVisible(true);
+        window.setResizable(false);
 
     }
     

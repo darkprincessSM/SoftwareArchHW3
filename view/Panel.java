@@ -55,25 +55,32 @@ public class Panel {
 
         JLabel titleLabel = new JLabel("Team 6: Pipes and Filters");
         cp.add(BorderLayout.NORTH, titlePanel);
-        titlePanel.setPreferredSize(new Dimension(350, 50));
+        titlePanel.setPreferredSize(new Dimension(350, 40));
         titlePanel.setBackground(Color.lightGray);
         titlePanel.setForeground(Color.black);
         titlePanel.add(titleLabel);
 
         cp.add(BorderLayout.CENTER, textPanel); // text panel consists of each indiv. text panel
-        textPanel.setPreferredSize(new Dimension(350, 450));
-        textPanel.setLayout(new BorderLayout());
+        textPanel.setPreferredSize(new Dimension(350, 430));
+        //textPanel.setLayout(new BorderLayout());
 
         Border loweredbeveled = BorderFactory.createBevelBorder(BevelBorder.LOWERED);
         GUIActionListener listener = new GUIActionListener(this);
 
         // area for entering input phrases
-        JLabel inputLabel = new JLabel(" Input");
+        //JLabel inputLabel = new JLabel("                              Input                 ");
         textPanel.add(inputPanel, BorderLayout.NORTH);
-        inputPanel.setLayout(new BorderLayout());
+        inputPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         inputPanel.setPreferredSize(new Dimension(350, 150));
-        inputPanel.add(inputLabel, BorderLayout.NORTH);
-        inputPanel.add(inputArea, BorderLayout.CENTER);
+        JLabel inputLabel = new JLabel("   Input                ");
+        inputPanel.add(inputLabel);
+        //inputLabel.setAlignmentX(FlowLayout.CENTER);
+        JLabel blankLabel = new JLabel("                                                    ");
+        
+        inputPanel.add(inputArea);
+        
+        //inputArea.setAlignmentX(FlowLayout.CENTER);
+        //inputPanel.add(blankLabel);
         inputPanel.setBackground(Color.lightGray);
         inputPanel.setForeground(Color.black);
         JScrollPane inputScrollPane = new JScrollPane(inputArea);
@@ -83,17 +90,23 @@ public class Panel {
         Border inputBorder = BorderFactory.createBevelBorder(BevelBorder.LOWERED);
         inputScrollPane.setBorder(inputBorder);
         inputScrollPane.setPreferredSize(new Dimension(200, 100));
-        inputPanel.add(inputButton, BorderLayout.SOUTH);
+        inputPanel.add(blankLabel);
+        // JPanel buttonPanel = new JPanel();
+        // //inputPanel.add(buttonPanel, BorderLayout.SOUTH);      
+        
+        inputPanel.add(inputButton);
+        // inputButton.setAlignmentY(FlowLayout.TRAILING);
+        
     
         inputButton.addActionListener(listener);
 
         // displaying the middle step        
-        intermediatePanel.setLayout(new BorderLayout());
-        JLabel intermediateLabel = new JLabel(" Second Step");
+        intermediatePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        JLabel intermediateLabel = new JLabel(" Second Step    ");
         textPanel.add(intermediatePanel, BorderLayout.CENTER);
-        intermediatePanel.setPreferredSize(new Dimension(350, 150));
-        intermediatePanel.add(intermediateLabel, BorderLayout.NORTH);
-        intermediatePanel.add(intermediateArea, BorderLayout.CENTER);
+        intermediatePanel.setPreferredSize(new Dimension(350, 130));
+        intermediatePanel.add(intermediateLabel);
+        intermediatePanel.add(intermediateArea);
         intermediatePanel.setBackground(Color.lightGray);
         intermediatePanel.setForeground(Color.black);
         JScrollPane intermediateScrollPane = new JScrollPane(intermediateArea);
@@ -106,10 +119,10 @@ public class Panel {
 
         // displaying the output
         Border outputBorder = BorderFactory.createBevelBorder(BevelBorder.LOWERED);
-        outputPanel.setLayout(new BorderLayout());
-        JLabel outputLabel = new JLabel(" Final output");
+        outputPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        JLabel outputLabel = new JLabel("  Final output      ");
         textPanel.add(outputPanel, BorderLayout.SOUTH);
-        outputPanel.setPreferredSize(new Dimension(350, 150));
+        outputPanel.setPreferredSize(new Dimension(350, 140));
         outputPanel.add(outputLabel, BorderLayout.NORTH);
         outputPanel.add(outputArea, BorderLayout.CENTER);        
         outputPanel.setBackground(Color.lightGray);
