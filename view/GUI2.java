@@ -2,9 +2,9 @@ package view;
 
 import javax.swing.JFrame;
 
-public class GUI {
+public class GUI2 {
     
-    public GUI() {
+    public GUI2() {
         startGui();
     }
     

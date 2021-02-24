@@ -5,14 +5,10 @@ import controller.GUIActionListener;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Window;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 
 import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,7 +19,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 public class Panel {
@@ -62,25 +57,19 @@ public class Panel {
 
         cp.add(BorderLayout.CENTER, textPanel); // text panel consists of each indiv. text panel
         textPanel.setPreferredSize(new Dimension(350, 430));
-        //textPanel.setLayout(new BorderLayout());
-
+        
         Border loweredbeveled = BorderFactory.createBevelBorder(BevelBorder.LOWERED);
         GUIActionListener listener = new GUIActionListener(this);
 
         // area for entering input phrases
-        //JLabel inputLabel = new JLabel("                              Input                 ");
         textPanel.add(inputPanel, BorderLayout.NORTH);
         inputPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         inputPanel.setPreferredSize(new Dimension(350, 150));
         JLabel inputLabel = new JLabel("   Input                ");
         inputPanel.add(inputLabel);
-        //inputLabel.setAlignmentX(FlowLayout.CENTER);
         JLabel blankLabel = new JLabel("                                                    ");
         
         inputPanel.add(inputArea);
-        
-        //inputArea.setAlignmentX(FlowLayout.CENTER);
-        //inputPanel.add(blankLabel);
         inputPanel.setBackground(Color.lightGray);
         inputPanel.setForeground(Color.black);
         JScrollPane inputScrollPane = new JScrollPane(inputArea);
@@ -90,14 +79,8 @@ public class Panel {
         Border inputBorder = BorderFactory.createBevelBorder(BevelBorder.LOWERED);
         inputScrollPane.setBorder(inputBorder);
         inputScrollPane.setPreferredSize(new Dimension(200, 100));
-        inputPanel.add(blankLabel);
-        // JPanel buttonPanel = new JPanel();
-        // //inputPanel.add(buttonPanel, BorderLayout.SOUTH);      
-        
-        inputPanel.add(inputButton);
-        // inputButton.setAlignmentY(FlowLayout.TRAILING);
-        
-    
+        inputPanel.add(blankLabel);        
+        inputPanel.add(inputButton);         
         inputButton.addActionListener(listener);
 
         // displaying the middle step        
@@ -139,8 +122,6 @@ public class Panel {
         ButtonGroup priorityGroup = new ButtonGroup();
         priorityGroup.add(shiftButton);
         priorityGroup.add(alphaButton);
-        //JLabel priorityLabel = new JLabel("Priority");
-        //priorityLabel.setForeground(Color.black);
         
         TitledBorder titledPriorityBorder;
         titledPriorityBorder = BorderFactory.createTitledBorder(loweredbeveled, "Priority");
@@ -149,11 +130,8 @@ public class Panel {
         
         priorityPanel.setBorder(titledPriorityBorder);
         priorityPanel.setPreferredSize(new Dimension(350, 60));
-        //priorityPanel.setBorder(new LineBorder(Color.darkGray, 1));
         priorityPanel.setBackground(Color.gray);
         priorityPanel.setForeground(Color.white);
-        //priorityPanel.add(priorityLabel);
-        priorityPanel.add(shiftButton);
         priorityPanel.add(alphaButton);
         shiftButton.setBackground(Color.gray);
         shiftButton.setForeground(Color.black);
@@ -174,24 +152,5 @@ public class Panel {
     
     public JRadioButton getShiftButton() {
         return shiftButton;
-    }
-
-    // public static void textPanelSetup(Border borderName, Panel panelName, JLabel labelName, JScrollPane scrollName, JTextArea areaName) {
-    //     borderName = BorderFactory.createBevelBorder(BevelBorder.LOWERED);
-    //     panelName.setLayout(new FlowLayout());
-    //     JLabel labelName = new JLabel("Second Step");
-    //     textPanel.add(panelName);
-    //     panelName.setPreferredSize(new Dimension(350, 150));
-    //     panelName.add(labelName);
-    //     panelName.add(intermediateArea);
-    //     panelName.setBackground(Color.lightGray);
-    //     panelName.setForeground(Color.black);
-    //     JScrollPane scrollName = new JScrollPane(areaName);
-    //     panelName.add(scrollName);
-    //     areaName.setEditable(false);
-    //     areaName.setLineWrap(true);
-    //     scrollName.setBorder(borderName);
-    //     scrollName.setPreferredSize(new Dimension(200, 100));
-    // }    
-    
+    }    
 }
