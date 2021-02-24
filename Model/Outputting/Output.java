@@ -1,3 +1,4 @@
+package Model.Outputting;
 
 import java.util.*;
 
@@ -13,7 +14,7 @@ public class Output {
     }
 
     /**
-     * @param stmt 
+     * @param stmt
      * @return
      */
     public ArrayList<String> start(ArrayList<String> stmt) {

@@ -1,10 +1,10 @@
-package Gui;
-import DataTransforming.*;
-import Outputting.*;
+package Model.Gui;
+
+import Model.DataTransforming.*;
+import Model.Outputting.*;
 import java.util.*;
 
 public class Transmitter {
-
 
     public Transmitter() {
     }
@@ -14,7 +14,5 @@ public class Transmitter {
     private Sorter alphabetSort;
     private Shifter circularShifter;
     private Output outputResult;
-
-    }
 
 }

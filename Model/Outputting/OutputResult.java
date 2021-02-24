@@ -1,3 +1,4 @@
+package Model.Outputting;
 
 import java.util.*;
 
@@ -20,7 +21,7 @@ public class OutputResult {
     /**
      * 
      */
-    public void Attribute1;
+    // public void Attribute1;
 
     /**
      * @param stmt

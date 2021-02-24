@@ -57,7 +57,7 @@ public class Panel {
 
         cp.add(BorderLayout.CENTER, textPanel); // text panel consists of each indiv. text panel
         textPanel.setPreferredSize(new Dimension(350, 430));
-        
+
         Border loweredbeveled = BorderFactory.createBevelBorder(BevelBorder.LOWERED);
         GUIActionListener listener = new GUIActionListener(this);
 
@@ -68,7 +68,7 @@ public class Panel {
         JLabel inputLabel = new JLabel("   Input                ");
         inputPanel.add(inputLabel);
         JLabel blankLabel = new JLabel("                                                    ");
-        
+
         inputPanel.add(inputArea);
         inputPanel.setBackground(Color.lightGray);
         inputPanel.setForeground(Color.black);
@@ -79,11 +79,11 @@ public class Panel {
         Border inputBorder = BorderFactory.createBevelBorder(BevelBorder.LOWERED);
         inputScrollPane.setBorder(inputBorder);
         inputScrollPane.setPreferredSize(new Dimension(200, 100));
-        inputPanel.add(blankLabel);        
-        inputPanel.add(inputButton);         
+        inputPanel.add(blankLabel);
+        inputPanel.add(inputButton);
         inputButton.addActionListener(listener);
 
-        // displaying the middle step        
+        // displaying the middle step
         intermediatePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         JLabel intermediateLabel = new JLabel(" Second Step    ");
         textPanel.add(intermediatePanel, BorderLayout.CENTER);
@@ -107,7 +107,7 @@ public class Panel {
         textPanel.add(outputPanel, BorderLayout.SOUTH);
         outputPanel.setPreferredSize(new Dimension(350, 140));
         outputPanel.add(outputLabel, BorderLayout.NORTH);
-        outputPanel.add(outputArea, BorderLayout.CENTER);        
+        outputPanel.add(outputArea, BorderLayout.CENTER);
         outputPanel.setBackground(Color.lightGray);
         outputPanel.setForeground(Color.black);
         JScrollPane outputScrollPane = new JScrollPane(outputArea);
@@ -122,17 +122,18 @@ public class Panel {
         ButtonGroup priorityGroup = new ButtonGroup();
         priorityGroup.add(shiftButton);
         priorityGroup.add(alphaButton);
-        
+
         TitledBorder titledPriorityBorder;
         titledPriorityBorder = BorderFactory.createTitledBorder(loweredbeveled, "Priority");
         titledPriorityBorder.setTitleJustification(TitledBorder.LEFT);
         titledPriorityBorder.setTitleColor(Color.black);
-        
+
         priorityPanel.setBorder(titledPriorityBorder);
         priorityPanel.setPreferredSize(new Dimension(350, 60));
         priorityPanel.setBackground(Color.gray);
         priorityPanel.setForeground(Color.white);
         priorityPanel.add(alphaButton);
+        priorityPanel.add(shiftButton);
         shiftButton.setBackground(Color.gray);
         shiftButton.setForeground(Color.black);
         shiftButton.addActionListener(listener);
@@ -146,11 +147,15 @@ public class Panel {
         return inputButton;
     }
 
+    public JTextArea getInputArea() {
+        return inputArea;
+    }
+
     public JRadioButton getAlphaButton() {
         return alphaButton;
     }
-    
+
     public JRadioButton getShiftButton() {
         return shiftButton;
-    }    
+    }
 }

@@ -1,7 +1,7 @@
 package controller;
 
 import view.Panel;
-
+import Model.Gui.GuiTransmitter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,6 +17,7 @@ public class GUIActionListener implements ActionListener {
     // private JTextArea outputArea;
     private Boolean isSort = Boolean.valueOf(false);
     private Boolean isShift = Boolean.valueOf(false);
+    private GuiTransmitter guiTransmitter;
 
     public GUIActionListener(Panel panel) {
         this.panel = panel;
@@ -25,26 +26,31 @@ public class GUIActionListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
-        
+
         if (source == panel.getShiftButton()) {
             System.out.println("shift boolean");
-            isSort = false;    
-            isShift = true;                 
-                       
+            isSort = false;
+            isShift = true;
+
         } else if (source == panel.getAlphaButton()) {
             System.out.println("sort boolean");
-            isShift = false;    
-            isSort = true;  
+            isShift = false;
+            isSort = true;
 
         } else if (source == panel.getInputButton()) {
-            System.out.println("sending to the filters");
+            guiTransmitter = new GuiTransmitter(panel.getInputArea().getText());
+            guiTransmitter.setPanel(panel);
+            System.out.println("sending: '" + panel.getInputArea().getText() + "' to the filters");
             if (isShift) {
+                guiTransmitter.setPriority(2);
                 System.out.println("sending to the circular shifter");
             } else if (isSort) {
+                guiTransmitter.setPriority(1);
                 System.out.println("sending to be sorted alphabetically");
             }
+            guiTransmitter.transmit();
         }
-    
+
     }
-    
+
 }

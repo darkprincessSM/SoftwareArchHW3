@@ -1,23 +1,18 @@
-package Gui;
+package Model.Gui;
 
 import java.util.*;
 
 public class Starter {
+    // private ArrayList<String> stmt;
+    // private Transmitter transmitter;
+    // private int priority;
 
     public Starter() {
     }
 
-    private ArrayList<String> stmt;
+    // public void start(void stmt) {
 
-    private Transmitter transmitter;
-
-    private Transmitter circularTransmitter;
-
-    private int priority;
-
-    public void start(void stmt) {
-
-    }
+    // }
 
     public void setStmt(ArrayList<String> userArray) {
 
