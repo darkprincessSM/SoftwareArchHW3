@@ -1,13 +1,15 @@
 package controller;
 
 import view.Panel;
-import Model.Gui.GuiTransmitter;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
+
+import model.Gui.GuiTransmitter;
 
 public class GUIActionListener implements ActionListener {
 
@@ -29,16 +31,18 @@ public class GUIActionListener implements ActionListener {
 
         if (source == panel.getShiftButton()) {
             System.out.println("shift boolean");
+            System.out.println(panel.getShiftButton().isSelected());
             isSort = false;
             isShift = true;
 
         } else if (source == panel.getAlphaButton()) {
             System.out.println("sort boolean");
+            System.out.println(panel.getAlphaButton().isSelected());
             isShift = false;
             isSort = true;
 
         } else if (source == panel.getInputButton()) {
-            guiTransmitter = new GuiTransmitter(panel.getInputArea().getText());
+            guiTransmitter = new GuiTransmitter();
             guiTransmitter.setPanel(panel);
             System.out.println("sending: '" + panel.getInputArea().getText() + "' to the filters");
             if (isShift) {
@@ -48,7 +52,7 @@ public class GUIActionListener implements ActionListener {
                 guiTransmitter.setPriority(1);
                 System.out.println("sending to be sorted alphabetically");
             }
-            guiTransmitter.transmit();
+            guiTransmitter.transmitIn(panel.getInputArea().getText());
         }
 
     }

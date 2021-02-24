@@ -1,25 +1,8 @@
-package Model.Outputting;
+package model.Outputting;
 
 import java.util.*;
 
-/**
- * 
- */
-public class Output {
+public interface Output {
 
-    /**
-     * Default constructor
-     */
-    public Output() {
-    }
-
-    /**
-     * @param stmt
-     * @return
-     */
-    public ArrayList<String> start(ArrayList<String> stmt) {
-        // TODO implement here
-        return null;
-    }
-
+    public ArrayList<String> start(ArrayList<String> stmt);
 }

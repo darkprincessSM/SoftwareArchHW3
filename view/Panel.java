@@ -24,10 +24,12 @@ import javax.swing.border.TitledBorder;
 public class Panel {
 
     private JFrame window;
+    private JPanel intermediatePanel = new JPanel();
+    private JPanel outputPanel = new JPanel();
 
     private JTextArea inputArea = new JTextArea(5, 10);
-    private JTextArea intermediateArea = new JTextArea();
-    private JTextArea outputArea = new JTextArea();
+    private JTextArea intermediateArea = new JTextArea(5, 10);
+    private JTextArea outputArea = new JTextArea(5, 10);
 
     private JRadioButton alphaButton = new JRadioButton("Alphabetical Sort");
     private JRadioButton shiftButton = new JRadioButton("Circular Shift");
@@ -44,8 +46,6 @@ public class Panel {
         JPanel titlePanel = new JPanel();
         JPanel textPanel = new JPanel(); // for all the jtextareas
         JPanel inputPanel = new JPanel();
-        JPanel intermediatePanel = new JPanel();
-        JPanel outputPanel = new JPanel();
         JPanel priorityPanel = new JPanel();
 
         JLabel titleLabel = new JLabel("Team 6: Pipes and Filters");
@@ -158,4 +158,13 @@ public class Panel {
     public JRadioButton getShiftButton() {
         return shiftButton;
     }
+
+    public JTextArea getIntermediateArea() {
+        return intermediateArea;
+    }
+
+    public JPanel getIntermediatePanel() {
+        return intermediatePanel;
+    }
+
 }

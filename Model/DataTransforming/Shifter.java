@@ -1,14 +1,9 @@
-package Model.DataTransforming;
+package model.DataTransforming;
 
 import java.util.*;
 
-public class Shifter {
+public interface Shifter {
 
-    public Shifter() {
-    }
-
-    public ArrayList<String> start(ArrayList<String> stmt) {
-        return null;
-    }
+    public ArrayList<String> start(ArrayList<String> stmt);
 
 }

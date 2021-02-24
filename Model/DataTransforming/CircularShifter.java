@@ -1,8 +1,8 @@
-package Model.DataTransforming;
+package model.DataTransforming;
 
 import java.util.*;
 
-public class CircularShifter {
+public class CircularShifter implements Shifter {
     private ArrayList<String> stmt;
 
     public CircularShifter() {
