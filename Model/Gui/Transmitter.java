@@ -22,15 +22,11 @@ public class Transmitter {
 
     public void transmit(ArrayList<String> stmt) {
         if (priority == 1) {
-            ArrayList<String> sortedArray = new ArrayList<String>();
-            System.out.println("Going to Sorter");
-            sortedArray = alphabetSort.start(stmt);
-            System.out.println("Sorted Array: " + sortedArray);
-            guiTransmitter.transmitOut(panel, sortedArray);
-        } else if (priority == 2) {
-
             System.out.println("Shifter");
-
+        } else if (priority == 2) {
+            ArrayList<String> sortedArray = new ArrayList<String>();
+            sortedArray = alphabetSort.start(stmt);
+            guiTransmitter.transmitOut(panel, sortedArray);
         }
     }
 }

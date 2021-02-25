@@ -15,7 +15,6 @@ public class Starter {
     }
 
     public void start(ArrayList<String> stmt) {
-        System.out.println("In the Starter");
         transmitter = new Transmitter(panel, priority);
         transmitter.transmit(stmt);
     }

@@ -2,8 +2,6 @@ package model.Gui;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import javax.swing.JPanel;
-import view.GUI2;
 import view.Panel;
 
 public class GuiTransmitter {
@@ -37,7 +35,6 @@ public class GuiTransmitter {
                 stmt.remove(i);
             }
         }
-        System.out.println("\nAs Array:\n" + stmt);
     }
 
     public String makeString(ArrayList<String> stmt) {
