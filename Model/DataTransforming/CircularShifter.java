@@ -9,12 +9,10 @@ public class CircularShifter implements Shifter {
         String newLine = "";
         String oldLine = "";
         String[] parts;
-        for (int i = 0; i < stmt.size(); i++) {
+        for (int i = 0; i < stmt.size(); i++) {// for each line inputted by user
             shiftedStmt.add(stmt.get(i));
-            // DONT ERASE
-            // shifts Line
             oldLine = stmt.get(i);
-            for (int j = 0; j < stmt.get(i).split(" ").length - 1; j++) {
+            for (int j = 0; j < stmt.get(i).split(" ").length - 1; j++) { // shift line
                 parts = oldLine.split(" ");
                 for (int k = 1; k < parts.length; k++) {
                     newLine += parts[k] + " ";
@@ -24,13 +22,9 @@ public class CircularShifter implements Shifter {
                 oldLine = newLine;
                 newLine = "";
             }
-            // END DONT ERASE
         }
 
-        for (int i = 0; i < shiftedStmt.size(); i++) {
-            System.out.println(shiftedStmt.get(i));
-        }
-        return null;
+        return shiftedStmt;
 
     }
 
