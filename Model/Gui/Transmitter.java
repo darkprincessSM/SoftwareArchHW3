@@ -7,10 +7,8 @@ import model.Outputting.*;
 import view.Panel;
 
 public class Transmitter {
-    private GuiTransmitter guiTransmitter = new GuiTransmitter();
     private Sorter alphabetSort = new AlphabeticalSorter();
     private Shifter circularShifter = new CircularShifter();
-    private Output outputResult = new OutputResult();
     private int priority;
     private Panel panel;
 
@@ -20,17 +18,29 @@ public class Transmitter {
     }
 
     public void transmit(ArrayList<String> stmt) {
+        Output outputResult = new OutputResult(panel);
         ArrayList<String> sortedArray = new ArrayList<String>();
         ArrayList<String> shiftedArray = new ArrayList<String>();
-        // 1 = Shifter first, 2 = Sorter first
-        if (priority == 1) {
-            System.out.println("Shifter");
+
+        if (priority == 1) { // Shifter first
+            // mid output
             shiftedArray = circularShifter.start(stmt);
-            guiTransmitter.transmitOut(panel, shiftedArray);
-        } else if (priority == 2) {
+            outputResult.setFinished(false);
+            outputResult.start(shiftedArray);
+            // final output
+            sortedArray = alphabetSort.start(shiftedArray);
+            outputResult.setFinished(true);
+            outputResult.start(sortedArray);
+        } else if (priority == 2) { // Sorter first
+            // mid output
             sortedArray = alphabetSort.start(stmt);
-            guiTransmitter.transmitOut(panel, sortedArray);
-            circularShifter.start(sortedArray);
+            outputResult.setFinished(false);
+            outputResult.start(sortedArray);
+
+            // final output
+            shiftedArray = circularShifter.start(sortedArray);
+            outputResult.setFinished(true);
+            outputResult.start(shiftedArray);
         }
     }
 }

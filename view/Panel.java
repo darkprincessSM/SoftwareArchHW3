@@ -162,4 +162,8 @@ public class Panel {
         return intermediateArea;
     }
 
+    public JTextArea getOutputArea() {
+        return outputArea;
+    }
+
 }

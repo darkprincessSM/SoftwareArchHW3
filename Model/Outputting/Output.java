@@ -4,5 +4,8 @@ import java.util.*;
 
 public interface Output {
 
-    public ArrayList<String> start(ArrayList<String> stmt);
+    public void start(ArrayList<String> stmt);
+
+    public void setFinished(boolean bool);
+
 }

@@ -9,12 +9,12 @@ public class GuiTransmitter {
     private Panel panel;
     private ArrayList<String> stmt;
     private int priority = 1;
-    private String inputStmt;
+    private boolean finished;
 
     public void transmitIn(String stringStmt) {
         // Transmit in from GUI
-        System.out.println(stringStmt);
         splitInput(stringStmt);
+        System.out.println(priority);
         starter = new Starter(panel, priority);
         starter.start(stmt);
     }
@@ -23,7 +23,12 @@ public class GuiTransmitter {
         // transmit out to GUI
         this.panel = panel;
         String exitStmt = makeString(stmt);
-        panel.getIntermediateArea().setText(exitStmt);
+        // checking if its mid or final output
+        if (finished == false) {
+            panel.getIntermediateArea().setText(exitStmt);
+        } else if (finished == true) {
+            panel.getOutputArea().setText(exitStmt);
+        }
     }
 
     public void splitInput(String stringStmt) {
@@ -45,5 +50,9 @@ public class GuiTransmitter {
 
     public int getPriority() {
         return priority;
+    }
+
+    public void setFinished(boolean finished) {
+        this.finished = finished;
     }
 }
