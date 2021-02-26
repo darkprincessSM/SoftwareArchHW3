@@ -22,8 +22,12 @@ public class CircularShifter implements Shifter {
                 oldLine = newLine;
                 newLine = "";
             }
+            // END DONT ERASE
         }
 
+        for (int i = 0; i < shiftedStmt.size(); i++) {
+            System.out.println(shiftedStmt.get(i));
+        }
         return shiftedStmt;
 
     }

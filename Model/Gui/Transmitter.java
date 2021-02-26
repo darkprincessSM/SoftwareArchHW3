@@ -21,12 +21,12 @@ public class Transmitter {
 
     public void transmit(ArrayList<String> stmt) {
         ArrayList<String> sortedArray = new ArrayList<String>();
-        ArrayList<String> shifterArray = new ArrayList<String>();
-
+        ArrayList<String> shiftedArray = new ArrayList<String>();
         // 1 = Shifter first, 2 = Sorter first
         if (priority == 1) {
             System.out.println("Shifter");
-            circularShifter.start(stmt);
+            shiftedArray = circularShifter.start(stmt);
+            guiTransmitter.transmitOut(panel, shiftedArray);
         } else if (priority == 2) {
             sortedArray = alphabetSort.start(stmt);
             guiTransmitter.transmitOut(panel, sortedArray);

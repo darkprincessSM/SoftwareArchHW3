@@ -24,23 +24,14 @@ public class GuiTransmitter {
         this.panel = panel;
         String exitStmt = makeString(stmt);
         panel.getIntermediateArea().setText(exitStmt);
-
     }
 
     public void splitInput(String stringStmt) {
         stmt = new ArrayList<>(Arrays.asList(stringStmt.split("\\r?\\n|\\r")));
-        // splits string to arrayList using newline and spaces
-        // stmt = new ArrayList<>(Arrays.asList(stringStmt.split("(\\s+)(?ms)")));
-
-        // for (int i = 0; i < stmt.size(); i++) {
-        // if (stmt.get(i).length() == 0) {
-        // stmt.remove(i);
-        // }
-        // }
     }
 
     public String makeString(ArrayList<String> stmt) {
-        String stringStmt = String.join(" ", stmt);
+        String stringStmt = String.join("\n", stmt);
         return stringStmt;
     }
 
