@@ -17,16 +17,20 @@ public class Transmitter {
     public Transmitter(Panel panel, int priority) {
         this.priority = priority;
         this.panel = panel;
-        // if 1 sorter, 2 shifter
     }
 
     public void transmit(ArrayList<String> stmt) {
+        ArrayList<String> sortedArray = new ArrayList<String>();
+        ArrayList<String> shifterArray = new ArrayList<String>();
+
+        // 1 = Shifter first, 2 = Sorter first
         if (priority == 1) {
             System.out.println("Shifter");
+            circularShifter.start(stmt);
         } else if (priority == 2) {
-            ArrayList<String> sortedArray = new ArrayList<String>();
             sortedArray = alphabetSort.start(stmt);
             guiTransmitter.transmitOut(panel, sortedArray);
+            circularShifter.start(sortedArray);
         }
     }
 }

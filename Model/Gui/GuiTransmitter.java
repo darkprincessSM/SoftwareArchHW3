@@ -13,6 +13,7 @@ public class GuiTransmitter {
 
     public void transmitIn(String stringStmt) {
         // Transmit in from GUI
+        System.out.println(stringStmt);
         splitInput(stringStmt);
         starter = new Starter(panel, priority);
         starter.start(stmt);
@@ -27,14 +28,15 @@ public class GuiTransmitter {
     }
 
     public void splitInput(String stringStmt) {
-        // splits string to arrayList
-        stmt = new ArrayList<>(Arrays.asList(stringStmt.split("(\\s+)(?ms)")));
+        stmt = new ArrayList<>(Arrays.asList(stringStmt.split("\\r?\\n|\\r")));
+        // splits string to arrayList using newline and spaces
+        // stmt = new ArrayList<>(Arrays.asList(stringStmt.split("(\\s+)(?ms)")));
 
-        for (int i = 0; i < stmt.size(); i++) {
-            if (stmt.get(i).length() == 0) {
-                stmt.remove(i);
-            }
-        }
+        // for (int i = 0; i < stmt.size(); i++) {
+        // if (stmt.get(i).length() == 0) {
+        // stmt.remove(i);
+        // }
+        // }
     }
 
     public String makeString(ArrayList<String> stmt) {
