@@ -1,9 +1,9 @@
-package model.Gui;
+package model.Transmitting;
 
 import java.util.ArrayList;
 
-import model.DataTransforming.*;
 import model.Outputting.*;
+import model.Transforming.*;
 import view.Panel;
 
 public class Transmitter {

@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 
-import model.Gui.GuiTransmitter;
+import model.Gui.*;
 
 public class GUIActionListener implements ActionListener {
 
@@ -19,7 +19,7 @@ public class GUIActionListener implements ActionListener {
     // private JTextArea outputArea;
     private Boolean isSort = Boolean.valueOf(false);
     private Boolean isShift = Boolean.valueOf(false);
-    private GuiTransmitter guiTransmitter;
+    private GuiReceiver guiReceiver;
 
     public GUIActionListener(Panel panel) {
         this.panel = panel;
@@ -40,14 +40,14 @@ public class GUIActionListener implements ActionListener {
             isSort = true;
 
         } else if (source == panel.getInputButton()) {
-            guiTransmitter = new GuiTransmitter();
-            guiTransmitter.setPanel(panel);
+            guiReceiver = new GuiReceiver();
+            guiReceiver.setPanel(panel);
             if (isShift) {
-                guiTransmitter.setPriority(1);
+                guiReceiver.setPriority(1);
             } else if (isSort) {
-                guiTransmitter.setPriority(2);
+                guiReceiver.setPriority(2);
             }
-            guiTransmitter.transmitIn(panel.getInputArea().getText());
+            guiReceiver.transmitIn(panel.getInputArea().getText());
         }
 
     }

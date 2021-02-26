@@ -2,7 +2,7 @@ package model.Outputting;
 
 import java.util.*;
 
-import model.Gui.GuiTransmitter;
+import model.Gui.*;
 import view.Panel;
 
 public class OutputResult implements Output {
@@ -16,10 +16,10 @@ public class OutputResult implements Output {
 
     public void start(ArrayList<String> stmt) {
 
-        GuiTransmitter guiTransmitter = new GuiTransmitter();
-        guiTransmitter.setPanel(panel);
-        guiTransmitter.setFinished(finished);
-        guiTransmitter.transmitOut(panel, stmt);
+        GuiReceiver guiReceiver = new GuiReceiver();
+        guiReceiver.setPanel(panel);
+        guiReceiver.setFinished(finished);
+        guiReceiver.transmitOut(panel, stmt);
     }
 
     public void setFinished(boolean finished) {

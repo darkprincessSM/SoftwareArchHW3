@@ -1,4 +1,4 @@
-package model.DataTransforming;
+package model.Transforming;
 
 import java.text.ParseException;
 import java.text.RuleBasedCollator;

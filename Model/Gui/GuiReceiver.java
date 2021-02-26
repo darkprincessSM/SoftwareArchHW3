@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import view.Panel;
 
-public class GuiTransmitter {
+public class GuiReceiver {
     private Starter starter;
     private Panel panel;
     private ArrayList<String> stmt;

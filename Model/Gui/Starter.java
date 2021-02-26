@@ -2,6 +2,7 @@ package model.Gui;
 
 import java.util.*;
 
+import model.Transmitting.Transmitter;
 import view.Panel;
 
 public class Starter {
