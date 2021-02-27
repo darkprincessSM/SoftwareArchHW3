@@ -52,7 +52,10 @@ public class Panel {
         JLabel inputLabel = new JLabel("   Input                ");
         inputPanel.add(inputLabel);
         JLabel blankLabel = new JLabel("                                         ");
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
         inputPanel.add(inputArea);
         inputPanel.setBackground(Color.lightGray);
         inputPanel.setForeground(Color.black);

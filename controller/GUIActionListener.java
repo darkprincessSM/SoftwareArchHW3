@@ -48,7 +48,11 @@ public class GUIActionListener implements ActionListener {
                 guiTransmitter.setPriority(2);
                 System.out.println("sending to be sorted alphabetically");
             }
+<<<<<<< Updated upstream
             guiTransmitter.transmitIn(panel.getInputArea().getText());
+=======
+            guiReceiver.transmitIn(panel.getInputArea().getText());
+>>>>>>> Stashed changes
         } else if (source == panel.getClearButton()) {
             panel.getInputArea().setText("");
             panel.getIntermediateArea().setText("");
