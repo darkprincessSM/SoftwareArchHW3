@@ -49,10 +49,10 @@ public class Panel {
         // area for entering input phrases
         textPanel.add(inputPanel, BorderLayout.NORTH);
         inputPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        inputPanel.setPreferredSize(new Dimension(334, 595));
+        inputPanel.setPreferredSize(new Dimension(336, 597));
         JLabel inputLabel = new JLabel("   Input ");
         inputPanel.add(inputLabel);
-        JLabel blankLabel = new JLabel("                                                ");
+        JLabel blankLabel = new JLabel("                               ");
 
         inputPanel.add(inputArea);
         inputPanel.setBackground(Color.lightGray);
@@ -75,7 +75,7 @@ public class Panel {
         intermediatePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         JLabel intermediateLabel = new JLabel(" Second Step    ");
         textPanel.add(intermediatePanel, BorderLayout.CENTER);
-        intermediatePanel.setPreferredSize(new Dimension(334, 595));
+        intermediatePanel.setPreferredSize(new Dimension(336, 595));
         intermediatePanel.add(intermediateLabel);
         intermediatePanel.add(intermediateArea);
         intermediatePanel.setBackground(Color.lightGray);
@@ -94,7 +94,7 @@ public class Panel {
         outputPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         JLabel outputLabel = new JLabel("  Final Output      ");
         textPanel.add(outputPanel, BorderLayout.SOUTH);
-        outputPanel.setPreferredSize(new Dimension(334, 595));
+        outputPanel.setPreferredSize(new Dimension(336, 597));
         outputPanel.add(outputLabel, BorderLayout.NORTH);
         outputPanel.add(outputArea, BorderLayout.CENTER);
         outputPanel.setBackground(Color.lightGray);
