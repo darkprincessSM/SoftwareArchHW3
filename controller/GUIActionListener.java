@@ -48,6 +48,10 @@ public class GUIActionListener implements ActionListener {
                 guiReceiver.setPriority(2);
             }
             guiReceiver.transmitIn(panel.getInputArea().getText());
+        } else if (source == panel.getClearButton()) {
+            panel.getInputArea().setText("");
+            panel.getIntermediateArea().setText("");
+            panel.getOutputArea().setText("");
         }
 
     }
