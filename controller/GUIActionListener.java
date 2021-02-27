@@ -1,7 +1,7 @@
 package controller;
 
 import view.Panel;
-import Model.Gui.GuiTransmitter;
+import model.Gui.GuiTransmitter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -48,7 +48,11 @@ public class GUIActionListener implements ActionListener {
                 guiTransmitter.setPriority(2);
                 System.out.println("sending to be sorted alphabetically");
             }
-            guiTransmitter.transmit();
+            guiTransmitter.transmitIn(panel.getInputArea().getText());
+        } else if (source == panel.getClearButton()) {
+            panel.getInputArea().setText("");
+            panel.getIntermediateArea().setText("");
+            panel.getOutputArea().setText("");
         }
 
     }

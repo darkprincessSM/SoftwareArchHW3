@@ -2,24 +2,9 @@ package view;
 
 import controller.GUIActionListener;
 
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.BorderLayout;
-import java.awt.Color;
-
-import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.Border;
-import javax.swing.border.TitledBorder;
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.border.*;
 
 public class Panel {
 
@@ -31,6 +16,7 @@ public class Panel {
     private JRadioButton alphaButton = new JRadioButton("Alphabetical Sort");
     private JRadioButton shiftButton = new JRadioButton("Circular Shift");
     private JButton inputButton = new JButton("Enter");
+    private JButton clearButton = new JButton("Clear");
 
     public Panel(JFrame window) {
         this.window = window;
@@ -65,7 +51,7 @@ public class Panel {
         inputPanel.setPreferredSize(new Dimension(350, 150));
         JLabel inputLabel = new JLabel("   Input                ");
         inputPanel.add(inputLabel);
-        JLabel blankLabel = new JLabel("                                                    ");
+        JLabel blankLabel = new JLabel("                                         ");
 
         inputPanel.add(inputArea);
         inputPanel.setBackground(Color.lightGray);
@@ -80,6 +66,8 @@ public class Panel {
         inputPanel.add(blankLabel);
         inputPanel.add(inputButton);
         inputButton.addActionListener(listener);
+        inputPanel.add(clearButton);
+        clearButton.addActionListener(listener);
 
         // displaying the middle step
         intermediatePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -156,6 +144,18 @@ public class Panel {
 
     public JRadioButton getShiftButton() {
         return shiftButton;
+    }
+
+    public JTextArea getIntermediateArea() {
+        return intermediateArea;
+    }
+
+    public JTextArea getOutputArea() {
+        return outputArea;
+    }
+
+    public JButton getClearButton() {
+        return clearButton;
     }
 
 }
