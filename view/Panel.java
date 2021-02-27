@@ -35,13 +35,13 @@ public class Panel {
 
         JLabel titleLabel = new JLabel("Team 6: Pipes and Filters");
         cp.add(BorderLayout.NORTH, titlePanel);
-        titlePanel.setPreferredSize(new Dimension(1500, 40));
+        titlePanel.setPreferredSize(new Dimension(1000, 40));
         titlePanel.setBackground(Color.lightGray);
         titlePanel.setForeground(Color.black);
         titlePanel.add(titleLabel);
 
         cp.add(BorderLayout.CENTER, textPanel); // text panel consists of each indiv. text panel
-        textPanel.setPreferredSize(new Dimension(1550, 790));
+        textPanel.setPreferredSize(new Dimension(1027, 590));
 
         Border loweredbeveled = BorderFactory.createBevelBorder(BevelBorder.LOWERED);
         GUIActionListener listener = new GUIActionListener(this);
@@ -49,7 +49,7 @@ public class Panel {
         // area for entering input phrases
         textPanel.add(inputPanel, BorderLayout.NORTH);
         inputPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        inputPanel.setPreferredSize(new Dimension(500, 780));
+        inputPanel.setPreferredSize(new Dimension(334, 595));
         JLabel inputLabel = new JLabel("   Input ");
         inputPanel.add(inputLabel);
         JLabel blankLabel = new JLabel("                                                ");
@@ -61,10 +61,10 @@ public class Panel {
         inputScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         inputPanel.add(inputScrollPane);
         inputArea.setEditable(true);
-        inputArea.setLineWrap(true);
+        inputArea.setLineWrap(false);
         Border inputBorder = BorderFactory.createBevelBorder(BevelBorder.LOWERED);
         inputScrollPane.setBorder(inputBorder);
-        inputScrollPane.setPreferredSize(new Dimension(500, 700));
+        inputScrollPane.setPreferredSize(new Dimension(334, 527));
         inputPanel.add(blankLabel);
         inputPanel.add(inputButton);
         inputButton.addActionListener(listener);
@@ -75,7 +75,7 @@ public class Panel {
         intermediatePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         JLabel intermediateLabel = new JLabel(" Second Step    ");
         textPanel.add(intermediatePanel, BorderLayout.CENTER);
-        intermediatePanel.setPreferredSize(new Dimension(505, 780));
+        intermediatePanel.setPreferredSize(new Dimension(334, 595));
         intermediatePanel.add(intermediateLabel);
         intermediatePanel.add(intermediateArea);
         intermediatePanel.setBackground(Color.lightGray);
@@ -87,14 +87,14 @@ public class Panel {
         intermediateArea.setLineWrap(false);
         Border intermediateBorder = BorderFactory.createBevelBorder(BevelBorder.LOWERED);
         intermediateScrollPane.setBorder(intermediateBorder);
-        intermediateScrollPane.setPreferredSize(new Dimension(500, 700));
+        intermediateScrollPane.setPreferredSize(new Dimension(334, 527));
 
         // displaying the output
         Border outputBorder = BorderFactory.createBevelBorder(BevelBorder.LOWERED);
         outputPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         JLabel outputLabel = new JLabel("  Final Output      ");
         textPanel.add(outputPanel, BorderLayout.SOUTH);
-        outputPanel.setPreferredSize(new Dimension(505, 780));
+        outputPanel.setPreferredSize(new Dimension(334, 595));
         outputPanel.add(outputLabel, BorderLayout.NORTH);
         outputPanel.add(outputArea, BorderLayout.CENTER);
         outputPanel.setBackground(Color.lightGray);
@@ -105,7 +105,7 @@ public class Panel {
         outputArea.setEditable(false);
         outputArea.setLineWrap(false);
         outputScrollPane.setBorder(outputBorder);
-        outputScrollPane.setPreferredSize(new Dimension(500, 700));
+        outputScrollPane.setPreferredSize(new Dimension(334, 527));
 
         // for setting priority
         cp.add(BorderLayout.SOUTH, priorityPanel);
