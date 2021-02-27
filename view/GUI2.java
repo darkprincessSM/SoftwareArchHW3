@@ -19,7 +19,7 @@ public class GUI2 {
 
         window.pack();
         window.setVisible(true);
-        window.setResizable(false);
+        //window.setResizable(false);
 
     }
     
