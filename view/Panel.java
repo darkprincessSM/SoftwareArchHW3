@@ -41,7 +41,7 @@ public class Panel {
         titlePanel.add(titleLabel);
 
         cp.add(BorderLayout.CENTER, textPanel); // text panel consists of each indiv. text panel
-        textPanel.setPreferredSize(new Dimension(1550, 800));
+        textPanel.setPreferredSize(new Dimension(1550, 790));
 
         Border loweredbeveled = BorderFactory.createBevelBorder(BevelBorder.LOWERED);
         GUIActionListener listener = new GUIActionListener(this);
@@ -75,7 +75,7 @@ public class Panel {
         intermediatePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         JLabel intermediateLabel = new JLabel(" Second Step    ");
         textPanel.add(intermediatePanel, BorderLayout.CENTER);
-        intermediatePanel.setPreferredSize(new Dimension(500, 780));
+        intermediatePanel.setPreferredSize(new Dimension(505, 780));
         intermediatePanel.add(intermediateLabel);
         intermediatePanel.add(intermediateArea);
         intermediatePanel.setBackground(Color.lightGray);
@@ -84,7 +84,7 @@ public class Panel {
         intermediateScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         intermediatePanel.add(intermediateScrollPane);
         intermediateArea.setEditable(false);
-        intermediateArea.setLineWrap(true);
+        intermediateArea.setLineWrap(false);
         Border intermediateBorder = BorderFactory.createBevelBorder(BevelBorder.LOWERED);
         intermediateScrollPane.setBorder(intermediateBorder);
         intermediateScrollPane.setPreferredSize(new Dimension(500, 700));
@@ -94,7 +94,7 @@ public class Panel {
         outputPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         JLabel outputLabel = new JLabel("  Final Output      ");
         textPanel.add(outputPanel, BorderLayout.SOUTH);
-        outputPanel.setPreferredSize(new Dimension(500, 780));
+        outputPanel.setPreferredSize(new Dimension(505, 780));
         outputPanel.add(outputLabel, BorderLayout.NORTH);
         outputPanel.add(outputArea, BorderLayout.CENTER);
         outputPanel.setBackground(Color.lightGray);
@@ -103,7 +103,7 @@ public class Panel {
         outputScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         outputPanel.add(outputScrollPane);
         outputArea.setEditable(false);
-        outputArea.setLineWrap(true);
+        outputArea.setLineWrap(false);
         outputScrollPane.setBorder(outputBorder);
         outputScrollPane.setPreferredSize(new Dimension(500, 700));
 
