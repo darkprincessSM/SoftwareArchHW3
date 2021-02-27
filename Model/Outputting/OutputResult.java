@@ -3,9 +3,10 @@ package model.Outputting;
 import java.util.*;
 
 import model.Gui.*;
+import model.Transforming.Transformer;
 import view.Panel;
 
-public class OutputResult implements Output {
+public class OutputResult implements Transformer {
 
     private boolean finished;
     private Panel panel;
@@ -14,12 +15,13 @@ public class OutputResult implements Output {
         this.panel = panel;
     }
 
-    public void start(ArrayList<String> stmt) {
+    public ArrayList<String> start(ArrayList<String> stmt) {
 
         GuiReceiver guiReceiver = new GuiReceiver();
         guiReceiver.setPanel(panel);
         guiReceiver.setFinished(finished);
         guiReceiver.transmitOut(panel, stmt);
+        return null;
     }
 
     public void setFinished(boolean finished) {

@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.RuleBasedCollator;
 import java.util.*;
 
-public class AlphabeticalSorter implements Sorter {
+public class AlphabeticalSorter implements Transformer {
 
     public ArrayList<String> start(ArrayList<String> stmt) {
 
@@ -19,5 +19,9 @@ public class AlphabeticalSorter implements Sorter {
         }
 
         return stmt;
+    }
+
+    @Override
+    public void setFinished(boolean bool) {
     }
 }

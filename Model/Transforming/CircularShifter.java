@@ -2,7 +2,7 @@ package model.Transforming;
 
 import java.util.*;
 
-public class CircularShifter implements Shifter {
+public class CircularShifter implements Transformer {
     private ArrayList<String> shiftedStmt = new ArrayList<String>();
 
     public ArrayList<String> start(ArrayList<String> stmt) {
@@ -25,6 +25,10 @@ public class CircularShifter implements Shifter {
         }
         return shiftedStmt;
 
+    }
+
+    @Override
+    public void setFinished(boolean bool) {
     }
 
 }

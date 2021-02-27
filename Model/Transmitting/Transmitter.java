@@ -1,14 +1,13 @@
 package model.Transmitting;
 
 import java.util.ArrayList;
-
 import model.Outputting.*;
 import model.Transforming.*;
 import view.Panel;
 
 public class Transmitter {
-    private Sorter alphabetSort = new AlphabeticalSorter();
-    private Shifter circularShifter = new CircularShifter();
+    private Transformer alphabetSort = new AlphabeticalSorter();
+    private Transformer circularShifter = new CircularShifter();
     private int priority;
     private Panel panel;
 
@@ -18,7 +17,7 @@ public class Transmitter {
     }
 
     public void transmit(ArrayList<String> stmt) {
-        Output outputResult = new OutputResult(panel);
+        Transformer outputResult = new OutputResult(panel);
         ArrayList<String> sortedArray = new ArrayList<String>();
         ArrayList<String> shiftedArray = new ArrayList<String>();
 
