@@ -58,6 +58,7 @@ public class Panel {
         inputPanel.setBackground(Color.lightGray);
         inputPanel.setForeground(Color.black);
         JScrollPane inputScrollPane = new JScrollPane(inputArea);
+        inputScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         inputPanel.add(inputScrollPane);
         inputArea.setEditable(true);
         inputArea.setLineWrap(true);
@@ -80,6 +81,7 @@ public class Panel {
         intermediatePanel.setBackground(Color.lightGray);
         intermediatePanel.setForeground(Color.black);
         JScrollPane intermediateScrollPane = new JScrollPane(intermediateArea);
+        intermediateScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         intermediatePanel.add(intermediateScrollPane);
         intermediateArea.setEditable(false);
         intermediateArea.setLineWrap(true);
@@ -98,6 +100,7 @@ public class Panel {
         outputPanel.setBackground(Color.lightGray);
         outputPanel.setForeground(Color.black);
         JScrollPane outputScrollPane = new JScrollPane(outputArea);
+        outputScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         outputPanel.add(outputScrollPane);
         outputArea.setEditable(false);
         outputArea.setLineWrap(true);
@@ -112,7 +115,7 @@ public class Panel {
 
         TitledBorder titledPriorityBorder;
         titledPriorityBorder = BorderFactory.createTitledBorder(loweredbeveled, "Priority");
-        titledPriorityBorder.setTitleJustification(TitledBorder.LEFT);
+        titledPriorityBorder.setTitleJustification(TitledBorder.CENTER);
         titledPriorityBorder.setTitleColor(Color.black);
 
         priorityPanel.setBorder(titledPriorityBorder);
