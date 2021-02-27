@@ -17,6 +17,8 @@ public class Panel {
     private JRadioButton alphaButton = new JRadioButton("Alphabetical Sort");
     private JRadioButton shiftButton = new JRadioButton("Circular Shift");
     private JButton inputButton = new JButton("Enter");
+    private JButton clearButton = new JButton("Clear");
+
 
     public Panel(JFrame window) {
         this.window = window;
@@ -50,7 +52,7 @@ public class Panel {
         inputPanel.setPreferredSize(new Dimension(350, 150));
         JLabel inputLabel = new JLabel("   Input                ");
         inputPanel.add(inputLabel);
-        JLabel blankLabel = new JLabel("                                                    ");
+        JLabel blankLabel = new JLabel("                                        ");
 
         inputPanel.add(inputArea);
         inputPanel.setBackground(Color.lightGray);
@@ -65,6 +67,8 @@ public class Panel {
         inputPanel.add(blankLabel);
         inputPanel.add(inputButton);
         inputButton.addActionListener(listener);
+        inputPanel.add(clearButton);
+        clearButton.addActionListener(listener);
 
         // displaying the middle step
         intermediatePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -149,6 +153,10 @@ public class Panel {
 
     public JTextArea getOutputArea() {
         return outputArea;
+    }
+
+    public JButton getClearButton() {
+        return clearButton;
     }
 
 }
