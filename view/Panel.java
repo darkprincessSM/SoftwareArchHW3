@@ -119,7 +119,6 @@ public class Panel {
         titledPriorityBorder.setTitleColor(Color.black);
 
         priorityPanel.setBorder(titledPriorityBorder);
-        priorityPanel.setPreferredSize(new Dimension(350, 60));
         priorityPanel.setBackground(Color.gray);
         priorityPanel.setForeground(Color.white);
         priorityPanel.add(shiftButton);
