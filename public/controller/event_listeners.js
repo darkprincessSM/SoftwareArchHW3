@@ -16,6 +16,7 @@ export function addEventListeners() {
         await addUrlEntry(arr)
         console.log(arr)
         Element.textbox2.innerHTML = text;
+        Util.enableButton(button, label)
     })
 }
 
