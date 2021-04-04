@@ -13,9 +13,8 @@ export function addEventListeners() {
         const label = Util.disableButton(button)
         var text = Element.textbox1.value
         var arr = text.split(/\s+/)
+
         await addUrlEntry(arr)
-        console.log(arr)
-        Element.textbox2.innerHTML = text;
         Util.enableButton(button, label)
     })
 }
@@ -28,12 +27,23 @@ async function addUrlEntry(arr) {
         descriptor += arr[i] + " "
     }
     console.log(descriptor)
+    Element.textbox2.innerHTML = ""
+    Element.textbox2.innerHTML += `${url} ${descriptor}\n`
 
     const newUrl = new UrlEntry({ url, descriptor });
 
+    var word = ""
+    arr.shift()
+    for (let i = 1; i < arr.length; i++) {
+        word = arr.shift()
+        arr.push(word)
+        Element.textbox2.innerHTML += `${url} ${arr.join(' ')}\n`;
+
+
+    }
+
     try {
         await FirebaseController.addUrlEntry(newUrl)
-
         // Util.popupInfo("Success", `${product.name} added!`, 'modal-add-product')
     } catch (e) {
         console.log(e)

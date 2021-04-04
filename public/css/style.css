@@ -9,7 +9,7 @@
 
 .inline-div {
   display: inline-block;
-  width: 600px;
+  width: 500px;
   height: 600px;
 }
 
@@ -18,7 +18,7 @@ textarea {
   width: 80%;
   height: 100%;
   padding-right: 10px;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .text-box-labels {
@@ -27,7 +27,24 @@ textarea {
 }
 
 .input-submit-button {
-  width: 600px;
+  width: 400px;
   height: 600px;
   float: right;
+}
+
+.input-buttons {
+  width: 600px;
+  height: 600px;
+}
+
+.btn-secondary {
+  font-size: 25px;
+}
+
+.btn-primary {
+  font-size: 30px;
+}
+
+.btn-group-toggle {
+  color: blueviolet;
 }

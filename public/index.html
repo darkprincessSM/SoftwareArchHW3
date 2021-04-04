@@ -27,7 +27,7 @@
       <button id="menu-button-home" class="btn btn-outline-primary">
         Home
       </button>
-      <button id="menu-button-home" class="btn btn-outline-primary">
+      <button id="menu-button-view-all" class="btn btn-outline-primary">
         View Url Database
       </button>
       <span>
@@ -59,9 +59,18 @@
         <label class="text-box-labels" for="story">Final Shift</label><br />
         <textarea id="story3" name="story3" rows="5" cols="33"></textarea>
       </div>
-      <br />
-      <div class="input-submit-button">
-        <button class="btn btn-primary btn-lg" id="submit">Shift</button>
+      <br /><br />
+
+      <div class="btn-group-toggle inline-div" data-toggle="buttons">
+        <label class="btn btn-secondary active">
+          <input type="checkbox" checked /> Circular Shift
+        </label>
+        <label class="btn btn-secondary">
+          <input type="checkbox" checked /> Alphabetical Sort
+        </label>
+      </div>
+      <div class="input-submit-button inline-div">
+        <button class="btn btn-primary" id="submit">Shift</button>
       </div>
     </div>
 
