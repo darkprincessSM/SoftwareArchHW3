@@ -14,5 +14,5 @@ window.addEventListener('popstate', e => {
 import * as Auth from './controller/auth.js'
 import * as HomePage from './viewpage/home_page.js'
 
-Auth.addEventListeners()
 HomePage.addEventListeners()
+Auth.addEventListeners()
