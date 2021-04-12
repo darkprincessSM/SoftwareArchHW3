@@ -85,8 +85,3 @@ export async function addUrlEntry(arr) {
 //     else
 //         return charCompare(a, b, index + 1)
 // }
-
-export function checkResulte() {
-
-}
-

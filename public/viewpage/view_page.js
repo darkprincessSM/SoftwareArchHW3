@@ -46,7 +46,7 @@ function buildProductCard(urls) {
     return `
     <tr>
         <td>${urls.url}</td>
-        <td>${urls.descriptor}</td>
+        <td>${urls.descriptor.join(' ')}</td>
     </tr>
 
             `

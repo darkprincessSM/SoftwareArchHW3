@@ -47,7 +47,7 @@ export async function home_page() {
         </label>
     </div>
     <div class="input-submit-button inline-div">
-        <button class="btn btn-primary" id="submit-button">Shift</button>
+        <button class="btn btn-secondary btn-lg" id="submit-button">Shift</button>
     </div>
     `
     Element.mainContent.innerHTML = html
