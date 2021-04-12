@@ -17,45 +17,38 @@ export async function home_page() {
     let html = `
    
     <div class="noise-box">
-    <label class="text-box-labels" for="noise-words">NoiseWords</label
-    ><br />
-    <textarea
-      id="noise-words"
-      name="noise-words"
-      class="noise-text"
-      rows="5"
-      cols="33"
-    >
-a an the and or of to be is in out by as at off</textarea
-    >
-  </div>
+        <label class="text-box-labels" for="noise-words">NoiseWords</label>
+        <br />
+        <textarea id="noise-words" name="noise-words" class="noise-text" rows="5" cols="33">
+            a an the and or of to be is in out by as at off
+        </textarea>
+    </div>
 
-  <div class="inline-div">
-    <label class="text-box-labels" for="story">Input</label><br />
-    <textarea id="story" name="story" rows="5" cols="33"></textarea>
-  </div>
-  <div class="inline-div">
-    <label class="text-box-labels" for="story">Middle Shift</label><br />
-    <textarea id="story2" name="story3" rows="5" cols="33"></textarea>
-  </div>
-  <div class="inline-div">
-    <label class="text-box-labels" for="story">Final Shift</label><br />
-    <textarea id="story3" name="story3" rows="5" cols="33"></textarea>
-  </div>
-  <br /><br />
-
-  <div class="btn-group-toggle inline-div" data-toggle="buttons">
-    <label class="btn btn-secondary active">
-      <input type="checkbox" checked /> Circular Shift
-    </label>
-    <label class="btn btn-secondary">
-      <input type="checkbox" checked /> Alphabetical Sort
-    </label>
-  </div>
-  <div class="input-submit-button inline-div">
-    <button class="btn btn-primary" id="submit-button">Shift</button>
-  </div>
-   
+    <div class="inline-div">
+        <label class="text-box-labels" for="story">Input</label><br />
+        <textarea id="story" name="story" rows="5" cols="33"></textarea>
+    </div>
+    <div class="inline-div">
+        <label class="text-box-labels" for="story">Middle Shift</label><br />
+        <textarea id="story2" name="story3" rows="5" cols="33"></textarea>
+    </div>
+    <div class="inline-div">
+        <label class="text-box-labels" for="story">Final Shift</label><br />
+        <textarea id="story3" name="story3" rows="5" cols="33"></textarea>
+    </div>
+    <br />
+    <br />
+    <div class="btn-group-toggle inline-div" data-toggle="buttons">
+        <label class="btn btn-secondary active">
+            <input type="checkbox" checked /> Circular Shift
+        </label>
+        <label class="btn btn-secondary">
+            <input type="checkbox" checked /> Alphabetical Sort
+        </label>
+    </div>
+    <div class="input-submit-button inline-div">
+        <button class="btn btn-primary" id="submit-button">Shift</button>
+    </div>
     `
     Element.mainContent.innerHTML = html
 
