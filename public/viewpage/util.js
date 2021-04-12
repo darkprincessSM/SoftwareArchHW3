@@ -1,12 +1,12 @@
 import * as Element from './element.js'
 
-export function popupInfo(title, body, closeModal) {//title, body, modal you need to close
-    if (closeModal)
-        $('#' + closeModal).modal('hide')
-    Element.popupInfoTitle.innerHTML = title
-    Element.popupInfoBody.innerHTML = body
-    $('#modal-popup-info').modal('show')
-}
+// export function popupInfo(title, body, closeModal) {//title, body, modal you need to close
+//     if (closeModal)
+//         $('#' + closeModal).modal('hide')
+//     Element.popupInfoTitle.innerHTML = title
+//     Element.popupInfoBody.innerHTML = body
+//     $('#modal-popup-info').modal('show')
+// }
 
 export function disableButton(button) {
     button.disabled = true

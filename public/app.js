@@ -11,8 +11,10 @@ window.addEventListener('popstate', e => {
     Routes.routing(pathname)
 })
 
-import * as Auth from './controller/event_listeners.js'
 import * as HomePage from './viewpage/home_page.js'
+import * as ViewPage from './viewpage/view_page.js'
+import * as Auth from './controller/event_listeners.js'
 
 HomePage.addEventListeners()
 Auth.addEventListeners()
+ViewPage.addEventListeners()

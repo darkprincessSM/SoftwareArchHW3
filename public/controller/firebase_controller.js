@@ -13,7 +13,7 @@ export async function getEntryList() {
     let entries = []
     const snapShot = await firebase.firestore()
         .collection(Constant.collectionName.URLS)
-        .orderBy('descriptoy')
+        .orderBy('descriptor')
         .get()
     snapShot.forEach(doc => {
         const p = new UrlEntry(doc.data())

@@ -1,6 +1,6 @@
-
 export const menuButtonHome = document.getElementById('menu-button-home')
 export const mainContent = document.getElementById('main-content')
+export const menuButtonView = document.getElementById('menu-button-view')
 
 export const submitButton = document.getElementById('submit')
 export const textbox1 = document.getElementById('story')
