@@ -1,6 +1,7 @@
 import * as Element from './element.js'
 import * as Routes from '../controller/routes.js'
-import * as Util from '../viewpage/util.js'
+import * as Util from './util.js'
+import * as KWIC from '../controller/kwic_controller.js'
 
 export function addEventListeners() {
     Element.menuButtonHome.addEventListener('click', async () => {
@@ -52,38 +53,27 @@ a an the and or of to be is in out by as at off</textarea
     </label>
   </div>
   <div class="input-submit-button inline-div">
-    <button class="btn btn-primary" id="submit">Shift</button>
+    <button class="btn btn-primary" id="submit-button">Shift</button>
   </div>
    
     `
     Element.mainContent.innerHTML = html
-}
 
-function buildProductCard(product, index) {
-    return
-    // <div class="card" style="width: 18rem; display: inline-block;">
-    //     <img src="${product.imageURL} class="card-img-top">
-    //     <div class="card-body">
-    //         <h5 class="card-title">${product.name}</h5>
-    //         <p class="card-text">
-    //         ${Util.currency(product.price)}<BR>
-    //         ${product.summary}
-    //         </p>
-    //         <div class="container pt-3 bg-light ${Auth.currentUser ? 'd-block' : 'd-none'}">
-    //             <form method="post" class="d-inline form-decrease-qty">
-    //             <input type="hidden" name="index" value="${index}">
-    //                 <button class="btn btn-outline-danger" type="submit">&minus;</button>    
-    //             </form>
-    //             <div id="qty-${product.docId}" class ="container rounded text-center text-white bg-primary d-inline-block w-50">
-    //                 ${product.qty == null || product.qty == 0 ? 'Add' : product.qty}
-    //             </div >
-    //             <form method="post" class="d-inline form-increase-qty">
-    //                 <input type="hidden" name="index" value="${index}">
-    //                 <button class="btn btn-outline-danger" type="submit">&plus;</button>    
-    //             </form>
-    //         </div>
-    //     </div >
-    // </div >
+    document.getElementById('submit-button').addEventListener('click', async () => {
+        var text = document.getElementById('story').value.trim()
+        var arr = text.split(/\s+/)
 
+        await KWIC.addUrlEntry(arr)
+
+        // try {
+        //     const docId = await FirebaseController.deleteThread(threadId)
+        //     history.pushState(null, null, Routes.routePath.HOME)
+        //     HomePage.home_page_new()
+        //     Util.popupInfo('Success', 'Thread Was Deleted')
+        // } catch (e) {
+        //     if (Constant.DEV) console(e)
+        //     Util.popupInfo('Error', JSON.stringify(e))
+        // }
+    })
 }
 

@@ -48,9 +48,9 @@ textarea {
 }
 
 .btn-secondary {
-  font-size: 25px;
+  padding-right: 20px;
 }
 
-.btn-primary {
-  font-size: 30px;
+.div-button {
+  margin-left: 20px;
 }

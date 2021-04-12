@@ -26,15 +26,15 @@ export async function addUrlEntry(arr) {
     }
 
     //remove noise
-    var val = Element.noisebox.value.trim()
+    var val = document.getElementById('noise-words').value.trim()
     var noise = val.split(/\s+/)
     const noisewords = new Noise({ words: noise })
 
     console.log(noisewords.words)
 
     //output to middle text box
-    Element.textbox2.innerHTML = ""
-    Element.textbox2.innerHTML += `${descriptor} ${url}\n`
+    document.getElementById('story2').innerHTML = ""
+    document.getElementById('story2').innerHTML += `${descriptor} ${url}\n`
 
     var word = ""
 
@@ -50,7 +50,7 @@ export async function addUrlEntry(arr) {
             }
         }
         if (!found) {
-            Element.textbox2.innerHTML += `${arr.join(' ')}  ${url}\n`;
+            document.getElementById('story2').innerHTML += `${arr.join(' ')}  ${url}\n`;
         }
     }
 

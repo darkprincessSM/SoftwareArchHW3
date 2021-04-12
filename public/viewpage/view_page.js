@@ -34,7 +34,6 @@ export async function view_page() {
         })
     } catch (e) {
         if (Constant.DEV) console.log(e)
-        // Util.popupInfo('getUrlList error', JSON.stringify(e))
         return
     }
     html += `
