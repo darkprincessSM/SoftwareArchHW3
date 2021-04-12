@@ -13,6 +13,8 @@ window.addEventListener('popstate', e => {
 
 import * as HomePage from './viewpage/home_page.js'
 import * as ViewPage from './viewpage/view_page.js'
+import * as SearchPage from './viewpage/search_page.js'
 
 HomePage.addEventListeners()
 ViewPage.addEventListeners()
+SearchPage.addEventListeners()

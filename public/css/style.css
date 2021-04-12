@@ -9,13 +9,13 @@
 
 .inline-div {
   display: inline-block;
-  width: 600px;
+  width: 425px;
   height: 600px;
 }
 
 .noise-text {
   width: 600px;
-  height: 50px;
+  height: 100px;
 }
 
 .noise-box {
@@ -37,14 +37,9 @@ textarea {
 }
 
 .input-submit-button {
-  width: 300px;
+  width: 150px;
   height: 600px;
   float: right;
-}
-
-.input-buttons {
-  width: 600px;
-  height: 600px;
 }
 
 .btn-secondary {

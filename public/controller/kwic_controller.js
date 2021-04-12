@@ -1,19 +1,18 @@
 import { UrlEntry } from '../model/url_entry.js'
 import { Noise } from '../model/noise.js'
-import * as Element from '../viewpage/element.js'
 import * as FirebaseController from './firebase_controller.js'
 
 export async function addUrlEntry(arr) {
     const url = arr[arr.length - 1]
-    let descriptor = ""
+    let descriptorString = ""
     arr.pop()
     console.log(arr)
 
     //assign values to url_entry 
     for (let i = 0; i < arr.length; i++) {
-        descriptor += arr[i] + " "
+        descriptorString += arr[i] + " "
     }
-
+    const descriptor = descriptorString.toLowerCase().match(/\S+/g)
     //add url_entry to firestore
     const newUrl = new UrlEntry({ url, descriptor });
 
@@ -34,7 +33,7 @@ export async function addUrlEntry(arr) {
 
     //output to middle text box
     document.getElementById('story2').innerHTML = ""
-    document.getElementById('story2').innerHTML += `${descriptor} ${url}\n`
+    document.getElementById('story2').innerHTML += `${descriptorString} ${url}\n`
 
     var word = ""
 
@@ -54,32 +53,40 @@ export async function addUrlEntry(arr) {
         }
     }
     //alphabetically sort
-    orderFunc(arr)
-    console.log('alpha sorting')
-    console.log(arr)
-}
+    // orderFunc(arr)
 
-function orderFunc(arr) {
+
     arr.sort(function (a, b) {
-        return charCompare(a, b, 0);
-    });
+        return a.toLowerCase().localeCompare(b.toLowerCase());
+    })
+
+
+    console.log('alpha sorting')
+    document.getElementById('story3').innerHTML = `${arr.join(' ')}`
 }
 
-function charCompare(a, b, index) {
+// function orderFunc(arr) {
+//     arr.sort(function (a, b) {
+//         return charCompare(a, b, 0);
+//     });
+// }
 
-    var rules = ["a ", "a", "A ", "A", "b ", "b", "B ", "B", "c ", "c", "C ", "C", "d ", "d", "D ", "D", "e ", "e", "E ", "E", "f ", "f", "F ", "F", "g ", "g", "G ", "G", "h ", "h"
-        + "H ", "H", "i ", "i", "I ", "I", "j ", "j", "J ", "J", "k ", "k", "K ", "K", "l ", "l", "L ", "L", "m ", "m", "M ", "M", "n ", "n", "N ", "N", "o ", "o", "O ", "O"
-        + "p ", "p", "P ", "P", "q ", "q", "Q ", "Q", "r ", "r", "R ", "R", "s ", "s", "S ", "S", "t ", "t", "T ", "T", "u ", "u", "U ", "U", "v ", "v", "V ", "V", "w ", "w"
-        + "W ", "W", "x ", "x", "X ", "X", "y ", "y", "Y ", "Y", "z ", "z", "Z ", "Z"];
+// function charCompare(a, b, index) {
 
-    if (index == a.length || index == b.length)
-        return 0;
-    //toUpperCase: isn't case sensitive
-    var aChar = rules.indexOf(a.toUpperCase().charAt(index));
-    var bChar = rules.indexOf(b.toUpperCase().charAt(index));
-    if (aChar != bChar)
-        return aChar - bChar
-    else
-        return charCompare(a, b, index + 1)
+//     var rules = [" ", "a", "A", "b", "B", "c", "C", "d", "D", "e", "E", "f", "F", "g", "G", "h", "H", "i", "I", "j", "J", "k", "K", "l", "L", "m", "M", "n", "N", "o", "O", "p", "P", "q", "Q", "r", "R", "s", "S", "t", "T", "u", "U", "v", "V", "w", "W", "x", "X", "y", "Y", "z", "Z"];
+
+//     if (index == a.length || index == b.length)
+//         return 0;
+//     //toUpperCase: isn't case sensitive
+//     var aChar = rules.indexOf(a.toUpperCase().charAt(index));
+//     var bChar = rules.indexOf(b.toUpperCase().charAt(index));
+//     if (aChar != bChar)
+//         return aChar - bChar
+//     else
+//         return charCompare(a, b, index + 1)
+// }
+
+export function checkResulte() {
+
 }
 

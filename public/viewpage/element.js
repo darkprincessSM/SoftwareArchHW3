@@ -1,6 +1,6 @@
 export const menuButtonHome = document.getElementById('menu-button-home')
 export const mainContent = document.getElementById('main-content')
 export const menuButtonView = document.getElementById('menu-button-view')
+export const searchButton = document.getElementById('search-submit-button')
 
-export const textbox3 = document.getElementById('story3')
-export const noisebox = document.getElementById('noise-words')
+export const formSearch = document.getElementById('form-search')
