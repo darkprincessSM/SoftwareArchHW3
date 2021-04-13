@@ -39,11 +39,11 @@ export async function home_page() {
     <br />
     <br />
     <div class="btn-group-toggle inline-div" data-toggle="buttons">
-        <label class="btn btn-secondary active">
-            <input type="checkbox" checked /> Circular Shift
+        <label class="btn btn-outline-dark btn-lg active">
+            <input type="radio" name="priority" id="shift-first" checked /> Circular Shift
         </label>
-        <label class="btn btn-secondary">
-            <input type="checkbox" checked /> Alphabetical Sort
+        <label class="btn btn-outline-dark btn-lg">
+            <input type="radio" name="priority" id="sort-first" checked /> Alphabetical Sort
         </label>
     </div>
     <div class="input-submit-button inline-div">
@@ -55,6 +55,7 @@ export async function home_page() {
     document.getElementById('submit-button').addEventListener('click', async () => {
         var text = document.getElementById('story').value.trim()
         var arr = text.split(/\s+/)
+        if (arr == '') return
 
         await KWIC.addUrlEntry(arr)
 
