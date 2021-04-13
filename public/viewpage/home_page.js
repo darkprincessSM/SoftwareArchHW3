@@ -19,8 +19,7 @@ export async function home_page() {
     <div class="noise-box">
         <label class="text-box-labels" for="noise-words">NoiseWords</label>
         <br />
-        <textarea id="noise-words" name="noise-words" class="noise-text" rows="5" cols="33">
-            a an the and or of to be is in out by as at off
+        <textarea id="noise-words" name="noise-words" class="noise-text" rows="5" cols="33"> a an the and or of to be is in out by as at off
         </textarea>
     </div>
 

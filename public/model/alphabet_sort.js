@@ -1,4 +1,4 @@
-export class Alphabet_Sorted {
+export class AlphabetSort {
     constructor(data) {
         this.words = data.words
     }

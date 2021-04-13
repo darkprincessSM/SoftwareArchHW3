@@ -1,4 +1,4 @@
-export class Circularly_Shifted {
+export class CircularShift {
     constructor(data) {
         this.words = data.words
     }

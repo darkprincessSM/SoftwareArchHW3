@@ -1,68 +1,55 @@
 import { UrlEntry } from '../model/url_entry.js'
 import { Noise } from '../model/noise.js'
 import * as FirebaseController from './firebase_controller.js'
+import { CircularShift } from '../model/circular_shift.js'
+
+let noisewords
+let url
 
 export async function addUrlEntry(arr) {
-    const url = arr[arr.length - 1]
-    let descriptorString = ""
+    url = arr[arr.length - 1]
     arr.pop()
     console.log(arr)
 
-    //assign values to url_entry 
-    for (let i = 0; i < arr.length; i++) {
-        descriptorString += arr[i] + " "
-    }
-    const descriptor = descriptorString.toLowerCase().match(/\S+/g)
-    //add url_entry to firestore
-    const newUrl = new UrlEntry({ url, descriptor });
 
-    try {
-        await FirebaseController.addUrlEntry(newUrl)
-        // Util.popupInfo("Success", `${product.name} added!`, 'modal-add-product')
-    } catch (e) {
-        console.log(e)
-        // Util.popupInfo('Adding Product Failed!', JSON.stringify(e), 'modal-add-product')
-    }
-
-    //remove noise
+    //get noise words
     var val = document.getElementById('noise-words').value.trim()
     var noise = val.split(/\s+/)
-    const noisewords = new Noise({ words: noise })
-
+    noisewords = new Noise({ words: noise })
     console.log(noisewords.words)
+
+    //remove noise
+    var descriptor = checkNoise(arr)
+    console.log(descriptor)
+
+    //add url_entry to firestore
+    const newUrl = new UrlEntry({ url, descriptor });
+    try {
+        await FirebaseController.addUrlEntry(newUrl)
+    } catch (e) {
+        console.log(e)
+    }
 
     //output to middle text box
     document.getElementById('story2').innerHTML = ""
-    document.getElementById('story2').innerHTML += `${descriptorString} ${url}\n`
 
-    var word = ""
 
     //circular shift
-    for (let i = 1; i < arr.length; i++) {
-        var found = false;
-        word = arr.shift()
-        arr.push(word)
-        for (let j = 0; j < noisewords.words.length; j++) {
-            if (arr[0].toLowerCase() == noisewords.words[j]) {
-                found = true;
-                console.log(found)
-            }
-        }
-        if (!found) {
-            document.getElementById('story2').innerHTML += `${arr.join(' ')}  ${url}\n`;
-        }
-    }
-    //alphabetically sort
+    var words = circularShift(arr)
+    const circularFinal = new CircularShift({ words });
+
+
+    // //alphabetically sort
     // orderFunc(arr)
 
 
-    arr.sort(function (a, b) {
+    words.sort(function (a, b) {
         return a.toLowerCase().localeCompare(b.toLowerCase());
     })
 
 
     console.log('alpha sorting')
-    document.getElementById('story3').innerHTML = `${arr.join(' ')}`
+    document.getElementById('story3').innerHTML = `${words.join(' ')}`
 }
 
 // function orderFunc(arr) {
@@ -85,3 +72,33 @@ export async function addUrlEntry(arr) {
 //     else
 //         return charCompare(a, b, index + 1)
 // }
+
+function checkNoise(arr) {
+    var arr_omit_noise = new Array();
+    arr_omit_noise = arr.filter((el) => !noisewords.words.includes(el));
+    console.log('arr no noise')
+    console.log(arr_omit_noise)
+    return arr_omit_noise
+}
+
+function circularShift(arr) {
+    var word = ""
+    var found = false
+    var circular_array = new Array();
+
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < noisewords.words.length; j++) {
+            if (arr[0].toLowerCase() == noisewords.words[j]) {
+                found = true;
+            }
+        }
+        if (!found) {
+            document.getElementById('story2').innerHTML += `${arr.join(' ')}  ${url}\n`;
+            circular_array.push(arr.join(' '))
+        }
+        found = false;
+        word = arr.shift()
+        arr.push(word)
+    }
+    return circular_array
+}
