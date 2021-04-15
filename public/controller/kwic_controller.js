@@ -7,59 +7,84 @@ import { AlphabetSort } from '../model/alphabet_sort.js'
 let noisewords
 let url
 
-export async function addUrlEntry(arr) {
-    url = arr[arr.length - 1]
-    arr.pop()
-    console.log(arr)
+export async function addUrlEntry(lines, priority) {
+    var alphabetical_array = new Array();
+    var box = ''
+    if (priority == 1) box = 'story2'
+    if (priority == 2) box = 'story3'
+    if (lines == '') return
 
-    //get noise words
-    var val = document.getElementById('noise-words').value.trim()
-    var noise = val.split(/\s+/)
-    noisewords = new Noise({ words: noise })
-    console.log(noisewords.words)
+    for (let i = 0; i < lines.length; i++) {
+        console.log(i)
+        var arr = lines[i].split(/\s+/)
+        if (arr == '') return
+        url = arr[arr.length - 1]
+        arr.pop()
 
-    //remove noise
-    var descriptor = checkNoise(arr)
-    console.log(descriptor)
+        //get noise words
+        var val = document.getElementById('noise-words').value.trim()
+        var noise = val.split(/\s+/)
+        noisewords = new Noise({ words: noise })
 
-    //add url_entry to firestore
-    const newUrl = new UrlEntry({ url, descriptor });
-    try {
-        await FirebaseController.addUrlEntry(newUrl)
-    } catch (e) {
-        console.log(e)
+        //remove noise
+        var descriptor = checkNoise(arr)
+
+        //add url_entry to firestore
+        const newUrl = new UrlEntry({ url, descriptor });
+        try {
+            await FirebaseController.addUrlEntry(newUrl)
+        } catch (e) {
+            console.log(e)
+        }
+
+        //output to middle text box
+        if (priority == 1) { // shift first
+            //circular shift
+            var words = shift(arr, priority)
+            const circularFinal = new CircularShift({ words });
+
+            for (let i = 0; i < words.length; i++) {
+                alphabetical_array.push(words[i])
+            }
+        }
+
+        if (priority == 2) { // sort first
+            for (let i = 0; i < words.length; i++) {
+                alphabetical_array.push(words[i])
+            }
+            //circular shift
+            var words = shift(arr, priority)
+            const circularFinal = new CircularShift({ words });
+        }
+    }
+    //sort alphabetically
+    if (priority == 1) {
+        words = sort(alphabetical_array)
+        for (let i = 0; i < words.length; i++) {
+            document.getElementById(`story3`).innerHTML += `${words[i]} ${url}\n`;
+        }
     }
 
-    //output to middle text box
-    document.getElementById('story2').innerHTML = ""
-
-    //circular shift
-    var words = shift(arr)
-    const circularFinal = new CircularShift({ words });
-
-    //alphabetically sort
-    words = sort(words)
-
-    for (let i = 0; i < words.length; i++) {
-        document.getElementById('story3').innerHTML += `${words[i]} ${url}\n`;
+    if (priority == 2) {
+        words = sort(alphabetical_array)
+        for (let i = 0; i < words.length; i++) {
+            document.getElementById(`story2`).innerHTML += `${words[i]} ${url}\n`;
+        }
     }
-
 }
-
 function checkNoise(arr) {
     var arr_omit_noise = new Array();
     arr_omit_noise = arr.filter((el) => !noisewords.words.includes(el));
-    console.log('arr no noise')
-    console.log(arr_omit_noise)
     return arr_omit_noise
 }
 
-function shift(arr) {
+function shift(arr, priority) {
     var word = ""
     var found = false
     var circular_array = new Array();
-    var upper = new Array()
-    var lower = new Array()
+    var box = ''
+    if (priority == 1) box = 'story2'
+    if (priority == 2) box = 'story3'
 
     for (let i = 0; i < arr.length; i++) {
         //look for noise word at beginning
@@ -70,18 +95,7 @@ function shift(arr) {
         }
         //if no noise words are found...
         if (!found) {
-            document.getElementById('story2').innerHTML += `${arr.join(' ')}  ${url}\n`;
-            if (arr[0].charAt(0) === arr[0].charAt(0).toUpperCase() && /^\d+$/.test(arr[0].charAt(0)) == false) {
-                upper.push(arr.join(' '))
-                console.log('uppercase')
-                console.log(arr.join(' '))
-
-            }
-            else {
-                lower.push(arr.join(' '))
-                console.log('lowerrcase')
-                console.log(arr.join(' '))
-            }
+            document.getElementById(`${box}`).innerHTML += `${arr.join(' ')}  ${url}\n`;
             circular_array.push(arr.join(' '))
         }
         found = false;

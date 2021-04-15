@@ -37,27 +37,38 @@ export async function home_page() {
     </div>
     <br />
     <br />
+    <form id="priority-buttons" class="inline-div">
     <div class="btn-group-toggle inline-div" data-toggle="buttons">
-        <label class="btn btn-outline-dark btn-lg active">
-            <input type="radio" name="priority" id="shift-first" checked /> Circular Shift
+        <label class="btn btn-outline-dark btn-lg">
+            <input type="radio" name="priority" id="shift-first" value="1" checked /> Circular Shift
         </label>
         <label class="btn btn-outline-dark btn-lg">
-            <input type="radio" name="priority" id="sort-first" checked /> Alphabetical Sort
+            <input type="radio" name="priority" id="sort-first" value="2" checked /> Alphabetical Sort
         </label>
     </div>
+    </form>
+
     <div class="input-submit-button inline-div">
-        <button class="btn btn-secondary btn-lg" id="submit-button">Shift</button>
+    <button class="btn btn-secondary btn-lg" id="submit-button">Shift</button>
     </div>
     `
     Element.mainContent.innerHTML = html
 
+
+
     document.getElementById('submit-button').addEventListener('click', async () => {
+        var form = document.getElementById("priority-buttons");
+        var priority = form.elements["priority"].value
+        console.log(priority)
         var text = document.getElementById('story').value.trim()
-        var arr = text.split(/\s+/)
-        if (arr == '') return
-
-        await KWIC.addUrlEntry(arr)
-
+        var lines = text.split(/\n/)
+        console.log(lines)
+        if (lines == '') return
+        document.getElementById('story2').innerHTML = ""
+        document.getElementById('story3').innerHTML = ""
+        await KWIC.addUrlEntry(lines, priority)
     })
+
+
 }
 
