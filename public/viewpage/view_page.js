@@ -30,7 +30,7 @@ export async function view_page() {
         let urls = await FirebaseController.getEntryList()
 
         urls.forEach(urls => {
-            html += buildProductCard(urls)
+            html += buildEntry(urls)
         })
     } catch (e) {
         if (Constant.DEV) console.log(e)
@@ -42,7 +42,7 @@ export async function view_page() {
     Element.mainContent.innerHTML = html
 }
 
-function buildProductCard(urls) {
+export function buildEntry(urls) {
     return `
     <tr>
         <td>${urls.url}</td>

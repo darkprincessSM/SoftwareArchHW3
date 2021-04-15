@@ -2,6 +2,7 @@ import { UrlEntry } from '../model/url_entry.js'
 import { Noise } from '../model/noise.js'
 import * as FirebaseController from './firebase_controller.js'
 import { CircularShift } from '../model/circular_shift.js'
+import { AlphabetSort } from '../model/alphabet_sort.js'
 
 let noisewords
 let url
@@ -10,7 +11,6 @@ export async function addUrlEntry(arr) {
     url = arr[arr.length - 1]
     arr.pop()
     console.log(arr)
-
 
     //get noise words
     var val = document.getElementById('noise-words').value.trim()
@@ -33,45 +33,18 @@ export async function addUrlEntry(arr) {
     //output to middle text box
     document.getElementById('story2').innerHTML = ""
 
-
     //circular shift
-    var words = circularShift(arr)
+    var words = shift(arr)
     const circularFinal = new CircularShift({ words });
 
+    //alphabetically sort
+    words = sort(words)
 
-    // //alphabetically sort
-    // orderFunc(arr)
+    for (let i = 0; i < words.length; i++) {
+        document.getElementById('story3').innerHTML += `${words[i]} ${url}\n`;
+    }
 
-
-    words.sort(function (a, b) {
-        return a.toLowerCase().localeCompare(b.toLowerCase());
-    })
-
-
-    console.log('alpha sorting')
-    document.getElementById('story3').innerHTML = `${words.join(' ')}`
 }
-
-// function orderFunc(arr) {
-//     arr.sort(function (a, b) {
-//         return charCompare(a, b, 0);
-//     });
-// }
-
-// function charCompare(a, b, index) {
-
-//     var rules = [" ", "a", "A", "b", "B", "c", "C", "d", "D", "e", "E", "f", "F", "g", "G", "h", "H", "i", "I", "j", "J", "k", "K", "l", "L", "m", "M", "n", "N", "o", "O", "p", "P", "q", "Q", "r", "R", "s", "S", "t", "T", "u", "U", "v", "V", "w", "W", "x", "X", "y", "Y", "z", "Z"];
-
-//     if (index == a.length || index == b.length)
-//         return 0;
-//     //toUpperCase: isn't case sensitive
-//     var aChar = rules.indexOf(a.toUpperCase().charAt(index));
-//     var bChar = rules.indexOf(b.toUpperCase().charAt(index));
-//     if (aChar != bChar)
-//         return aChar - bChar
-//     else
-//         return charCompare(a, b, index + 1)
-// }
 
 function checkNoise(arr) {
     var arr_omit_noise = new Array();
@@ -81,19 +54,34 @@ function checkNoise(arr) {
     return arr_omit_noise
 }
 
-function circularShift(arr) {
+function shift(arr) {
     var word = ""
     var found = false
     var circular_array = new Array();
+    var upper = new Array()
+    var lower = new Array()
 
     for (let i = 0; i < arr.length; i++) {
+        //look for noise word at beginning
         for (let j = 0; j < noisewords.words.length; j++) {
-            if (arr[0].toLowerCase() == noisewords.words[j]) {
+            if (arr[0].toLowerCase() == noisewords.words[j].toLowerCase()) {
                 found = true;
             }
         }
+        //if no noise words are found...
         if (!found) {
             document.getElementById('story2').innerHTML += `${arr.join(' ')}  ${url}\n`;
+            if (arr[0].charAt(0) === arr[0].charAt(0).toUpperCase() && /^\d+$/.test(arr[0].charAt(0)) == false) {
+                upper.push(arr.join(' '))
+                console.log('uppercase')
+                console.log(arr.join(' '))
+
+            }
+            else {
+                lower.push(arr.join(' '))
+                console.log('lowerrcase')
+                console.log(arr.join(' '))
+            }
             circular_array.push(arr.join(' '))
         }
         found = false;
@@ -101,4 +89,29 @@ function circularShift(arr) {
         arr.push(word)
     }
     return circular_array
+}
+
+function sort(words) {
+    const caseSensitiveSort = (words = []) => {
+        const sorter = (a, b) => {
+            if (a === b) {
+                return 0
+            };
+            if (a.charAt(0) === b.charAt(0)) {
+                return sorter(a.slice(1), b.slice(1))
+            }
+            if (a.charAt(0).toLowerCase() === b.charAt(0).toLowerCase()) {
+                if (/^[a-z]/.test(a.charAt(0)) && /^[A-Z]/.test(b.charAt(0))) {
+                    return -1;
+                };
+                if (/^[a-z]/.test(b.charAt(0)) && /^[A-Z]/.test(a.charAt(0))) {
+                    return 1;
+                };
+            };
+            return a.localeCompare(b);
+        };
+        words.sort(sorter);
+    }
+    caseSensitiveSort(words);
+    return words
 }

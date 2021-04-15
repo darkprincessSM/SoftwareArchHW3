@@ -2,6 +2,7 @@ import * as Element from './element.js'
 import * as Util from './util.js'
 import * as FirebaseController from '../controller/firebase_controller.js'
 import * as Routes from '../controller/routes.js'
+import * as ViewPage from './view_page.js'
 
 export function addEventListeners() {
     Element.formSearch.addEventListener('submit', async e => {
@@ -39,7 +40,8 @@ export async function search_page(keywordsArray) {
 
         entryList.forEach(entryList => {
             if (checker(entryList.descriptor, keywordsArray) != false) {
-                html += buildProductCard(entryList)
+
+                html += ViewPage.buildEntry(entryList)
             }
         })
 
@@ -54,11 +56,11 @@ export async function search_page(keywordsArray) {
     Element.mainContent.innerHTML = html
 }
 
-function buildProductCard(urls) {
-    return `
-    <tr>
-        <td>${urls.url}</td>
-        <td>${urls.descriptor.join(' ')}</td>
-    </tr>
-`
-}
+// function buildEntry(urls) {
+//     return `
+//     <tr>
+//         <td>${urls.url}</td>
+//         <td>${urls.descriptor.join(' ')}</td>
+//     </tr>
+// `
+// }

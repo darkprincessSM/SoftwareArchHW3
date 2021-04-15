@@ -58,15 +58,6 @@ export async function home_page() {
 
         await KWIC.addUrlEntry(arr)
 
-        // try {
-        //     const docId = await FirebaseController.deleteThread(threadId)
-        //     history.pushState(null, null, Routes.routePath.HOME)
-        //     HomePage.home_page_new()
-        //     Util.popupInfo('Success', 'Thread Was Deleted')
-        // } catch (e) {
-        //     if (Constant.DEV) console(e)
-        //     Util.popupInfo('Error', JSON.stringify(e))
-        // }
     })
 }
 
