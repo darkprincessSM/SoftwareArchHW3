@@ -28,11 +28,11 @@ export async function home_page() {
         <textarea id="story" name="story" rows="5" cols="33"></textarea>
     </div>
     <div class="inline-div">
-        <label class="text-box-labels" for="story">Middle Shift</label><br />
+        <label class="text-box-labels" for="story">Middle</label><br />
         <textarea id="story2" name="story3" rows="5" cols="33"></textarea>
     </div>
     <div class="inline-div">
-        <label class="text-box-labels" for="story">Final Shift</label><br />
+        <label class="text-box-labels" for="story">Final</label><br />
         <textarea id="story3" name="story3" rows="5" cols="33"></textarea>
     </div>
     <br />
@@ -59,10 +59,8 @@ export async function home_page() {
     document.getElementById('submit-button').addEventListener('click', async () => {
         var form = document.getElementById("priority-buttons");
         var priority = form.elements["priority"].value
-        console.log(priority)
         var text = document.getElementById('story').value.trim()
         var lines = text.split(/\n/)
-        console.log(lines)
         if (lines == '') return
         document.getElementById('story2').innerHTML = ""
         document.getElementById('story3').innerHTML = ""

@@ -2,7 +2,6 @@ import * as Element from './element.js'
 import * as Util from './util.js'
 import * as FirebaseController from '../controller/firebase_controller.js'
 import * as Routes from '../controller/routes.js'
-import * as ViewPage from './view_page.js'
 
 export function addEventListeners() {
     Element.formSearch.addEventListener('submit', async e => {
@@ -14,7 +13,7 @@ export function addEventListeners() {
         }
         else {
             const label = Util.disableButton(Element.searchButton)
-            const keywordsArray = keywords.toLowerCase().match(/\S+/g)
+            const keywordsArray = keywords.match(/\S+/g)
             const joinedSearchKeys = keywordsArray.join('+')
             history.pushState(null, null, Routes.routePathname.SEARCH + '#' + joinedSearchKeys)
             search_page(keywordsArray)
@@ -37,11 +36,19 @@ export async function search_page(keywordsArray) {
     let checker = (arr, target) => target.every(v => arr.includes(v));
     try {
         let entryList = await FirebaseController.searchEntries(keywordsArray)
+        var tempArray = new Array();
+
+        for (let i = 0; i < keywordsArray.length; i++) {
+            var word = keywordsArray[i].toLowerCase()
+            keywordsArray[i] = word;
+        }
 
         entryList.forEach(entryList => {
-            if (checker(entryList.descriptor, keywordsArray) != false) {
-
-                html += ViewPage.buildEntry(entryList)
+            var temp = entryList.descriptor.join(' ')
+            var arr = temp.toLowerCase()
+            tempArray = arr.split(/\s+/)
+            if (checker(tempArray, keywordsArray) != false) {
+                html += buildProductCard(entryList)
             }
         })
 
@@ -56,11 +63,11 @@ export async function search_page(keywordsArray) {
     Element.mainContent.innerHTML = html
 }
 
-// function buildEntry(urls) {
-//     return `
-//     <tr>
-//         <td>${urls.url}</td>
-//         <td>${urls.descriptor.join(' ')}</td>
-//     </tr>
-// `
-// }
+function buildProductCard(urls) {
+    return `
+    <tr>
+        <td>${urls.url}</td>
+        <td>${urls.descriptor.join(' ')}</td>
+    </tr>
+`
+}
