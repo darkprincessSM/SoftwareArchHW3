@@ -40,7 +40,7 @@ export async function search_page(keywordsArray) {
 
         for (let i = 0; i < keywordsArray.length; i++) {
             var word = keywordsArray[i].toLowerCase()
-            keywordsArray[i] = word;
+            keywordsArray[i] = word
         }
 
         entryList.forEach(entryList => {
@@ -48,7 +48,7 @@ export async function search_page(keywordsArray) {
             var arr = temp.toLowerCase()
             tempArray = arr.split(/\s+/)
             if (checker(tempArray, keywordsArray) != false) {
-                html += buildProductCard(entryList)
+                html += buildEntry(entryList)
             }
         })
 
@@ -63,7 +63,7 @@ export async function search_page(keywordsArray) {
     Element.mainContent.innerHTML = html
 }
 
-function buildProductCard(urls) {
+function buildEntry(urls) {
     return `
     <tr>
         <td>${urls.url}</td>
