@@ -13,16 +13,23 @@ export function addEventListeners() {
         }
         else {
             const label = Util.disableButton(Element.searchButton)
-            const keywordsArray = keywords.match(/\S+/g)
-            const joinedSearchKeys = keywordsArray.join('+')
+            var keywordsArray = keywords.match(/\S+/g)
+
+            var val = document.getElementById('current-noise-words').value.trim()
+            var noise = val.split(/\s+/)
+            var noNoiseKeyWords = keywordsArray.filter(function (el) {
+                return noise.indexOf(el) < 0;
+            });
+
+            const joinedSearchKeys = noNoiseKeyWords.join('+')
             history.pushState(null, null, Routes.routePathname.SEARCH + '#' + joinedSearchKeys)
-            search_page(keywordsArray)
+            search_page(noNoiseKeyWords)
             Util.enableButton(Element.searchButton, label)
         }
     })
 }
 
-export async function search_page(keywordsArray) {
+export async function search_page(noNoiseKeyWords) {
     let html = `<h1>Viewing Search Results</h2>
     <table class="table table-striped">
     <thead>
@@ -33,21 +40,22 @@ export async function search_page(keywordsArray) {
         </thead>
         <tbody>
     `
+
     let checker = (arr, target) => target.every(v => arr.includes(v));
     try {
-        let entryList = await FirebaseController.searchEntries(keywordsArray)
+        let entryList = await FirebaseController.getEntryList()
         var tempArray = new Array();
 
-        for (let i = 0; i < keywordsArray.length; i++) {
-            var word = keywordsArray[i].toLowerCase()
-            keywordsArray[i] = word
+        for (let i = 0; i < noNoiseKeyWords.length; i++) {
+            var word = noNoiseKeyWords[i].toLowerCase()
+            noNoiseKeyWords[i] = word
         }
 
         entryList.forEach(entryList => {
             var temp = entryList.descriptor.join(' ')
             var arr = temp.toLowerCase()
             tempArray = arr.split(/\s+/)
-            if (checker(tempArray, keywordsArray) != false) {
+            if (checker(tempArray, noNoiseKeyWords) != false) {
                 html += buildEntry(entryList)
             }
         })

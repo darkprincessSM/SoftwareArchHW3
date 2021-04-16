@@ -18,6 +18,10 @@
   height: 100px;
 }
 
+.current-noise-text {
+  width: 200px;
+  height: 30px;
+}
 .noise-box {
   padding-bottom: 60px;
   padding-left: 20px;
@@ -43,4 +47,5 @@ textarea {
 
 .div-button {
   margin-left: 20px;
+  margin-right: 20px;
 }

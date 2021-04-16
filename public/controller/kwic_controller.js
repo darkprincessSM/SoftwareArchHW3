@@ -19,6 +19,7 @@ export async function addUrlEntry(lines, priority) {
 
         //get noise words
         var val = document.getElementById('noise-words').value.trim()
+        document.getElementById('current-noise-words').innerHTML = val
         var noise = val.split(/\s+/)
         noisewords = new Noise({ words: noise })
 
