@@ -40,10 +40,10 @@ export async function home_page() {
     <form id="priority-buttons" class="inline-div">
     <div class="btn-group-toggle inline-div" data-toggle="buttons">
         <label class="btn btn-outline-dark btn-lg">
-            <input type="radio" name="priority" id="shift-first" value="1" checked /> Circular Shift
+            <input type="radio" name="priority" id="shift-first" value="1"/> Circular Shift
         </label>
         <label class="btn btn-outline-dark btn-lg">
-            <input type="radio" name="priority" id="sort-first" value="2" checked /> Alphabetical Sort
+            <input type="radio" name="priority" id="sort-first" value="2"/> Alphabetical Sort
         </label>
     </div>
     </form>
@@ -59,6 +59,8 @@ export async function home_page() {
     document.getElementById('submit-button').addEventListener('click', async () => {
         var form = document.getElementById("priority-buttons");
         var priority = form.elements["priority"].value
+        if (priority != 1 && priority != 2) alert("Please select the Shifting or Sorting button to proceed!");
+        console.log(priority)
         var text = document.getElementById('story').value.trim()
         var lines = text.split(/\n/)
         if (lines == '') return
